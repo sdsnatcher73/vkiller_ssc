@@ -1,0 +1,278 @@
+4) replace a PSG player with SCC player
+   allows us to put SCC music in Usas or Galious
+   is this doable? not sure
+   - would need to expand the cartridge size
+   - need to replace the music player code
+     if there are any game-related hooks/callbacks they would need to be fixed up
+   - ram location for channel data may need to be relocated/freed
+   - sound effects would need to be played by the old player
+     it would have control of one PSG channel
+   - what is the interface for starting a new song?
+
+   vampire killer:
+   - channel data @ 0xc01c, 0xc030, 0xc044
+   - music player update @ 0x8964
+   music player is similar in design, although the implementation is totally different
+   0-0xc0    = note on
+   0xc0-0xd0 = note off
+   0xe?      = special commands
+   0xea      = goto (I think)
+   0xf?      = PSG drums(?) not sure
+
+  todo:
+  - port vampire killer to use an scc mapper
+    use an openmsx tsc script to detect mapper
+    accesses and replace them
+  - figure out the "play song" function
+    use openmsx data breakpoints
+  - disable two of the original player's psg channels
+  - put an scc player in extra mapper memory and call
+    it on interrupt
+    when changing songs, change songs on the scc player
+
+    not sure how easy it will be to disentangle the player
+    relocation the player would be hard, eg wavetable offsets, jumps, lookup tables
+    probably not necessary though
+    all konami players should be in 4000-c000 range
+
+
+
+proof of concept:
+
+0) turn vanpire killer into a scc rom(?)
+1) append nemesis3 to vampire killer rom
+2) add a call to nemesis3 music update routine
+3) add a call to nemesis3 music start routine
+
+what I need to know:
+- nemesis3 new song start function address -> 6003
+  song number in A register
+  special meanings: a = 0x83, 0x84, 0x85, etc. (fade out etc.)
+- nemesis3 player update function address -> 6006
+  mapper banks:
+  (!)di
+  A -> 7000
+  B -> 9000
+  C -> b000
+  NOTE: Nemesis 3 stores original mapper banks in f0f1, f0f2, f0f3
+  so restoring the original banks is done like...
+  di
+  ld a,(0xf0f1)
+  ld (0x7000),a
+  ld a,(0xf0f2)
+  ld (0x9000),a
+  ld a,(0xf0f3)
+  ld (0xb000),a
+  ei
+
+
+- need some space in vampire killer rom to insert assembly to:
+  - change banks to nemesis 3
+  - call nemesis 3 update routine
+  vkiller init routine:   50c0
+  vkiller update routine: 8964
+  
+  vkiller music address: around 94a8-a5f9
+  a3a8 - start of some unused song or something
+
+what needs to happen:
+at 0x50c0 and 0x8964, put calls
+- write some assembler which flips mapper bank 1
+  and then calls a function on that mapper bank
+  then once it returns it should restore the original banks
+- insrt code at 0x50c0 and 0x8964 that uses that function
+  to call code on the music player
+- music player 'start song' could initially just always
+  play the same song
+
+alternatively... if I could find some space in 0x4000-0x6000
+then it would make things a bit easier
+
+*or* I could ldir the code to RAM and then run it from there
+
+
+steps:
+
+1) copy some instructions from 0x50a5 and 0x8964
+   into new assembly @ 0xa3a8
+
+   0x50a5:
+     push hl
+     push de
+     push bc
+     push af
+
+    0x8964:
+      ld a,(c097)
+      ld e,a
+
+   then call that code from the original code
+
+   test the rom - it should still work
+
+2) write a new empty bank targeted at 0x4000
+   put a RET in there
+
+3) write code to switch the new bank in and call
+   the function
+   it should hit the RET and return
+
+   test the rom - it should still work
+
+4) switch banks to 6000, 8000, a000
+   then switch them back again
+
+   test the rom - it should still work
+
+5) add calls to nemesis 3 music functions
+
+-----------------------------------------------------
+
+*OR*
+
+di
+ld a,0xf
+ld (0x5000), a
+call 0x4000
+xor a
+ld (0x5000), a
+ei
+
+-----------------------------------------------
+
+how do i tie all this assembler together?
+
+I guess using labels and setting target addresses
+not rocket science
+
+but then i have to copy the output somewhere
+
+
+methods:
+
+- copy to ram and run
+  + only one piece of assembler to write
+  - costs valuable ram
+
+---------------------------------------------
+
+NEW PLAN
+
+hook update function at 0x4030
+overwrite the page-switching code
+jump to my own code, which is embedded in the music player
+
+for the music-start code we will need to insert
+page-switching code in there as well
+means patching over more code, but that's ok
+
+>> need to find space to put my code in the nemesis 3
+music player
+
+NOTE: 0x4000 code also needs to switch the banks back
+      our code can't do it because it will switch
+      itself out
+
+free space @ 0xbe28
+
+
+
+problem with patching the interrupt:
+
+there is not enough space at 0x4030 to:
+- swap to my mapper bank
+- call my function
+- swap to vkiller's mapper bank
+- call its function
+
+
+I can't call vkiller's function directly from mine
+either because it's in the same bank so my code
+gets swapped out
+
+
+solutions:
+- find some space in 0x4000-0x6000 block
+- copy the bank-swapping code into RAM
+  how do I get it in RAM in the first place?
+- put my code in 0x6000 in the nemesis3 player
+  that way it can call the vkiller update function
+  without getting swapped out
+  ... but it would still need to swap itself out
+  in case the vkiller update function calls code
+  in that mapper block
+
+
+could potentially save some space at
+0x5351, 0x537d, 0x53b9
+
+these routines are the same except for different A reg
+could make a shared function that takes an A reg
+IDA is saying that there are calls into the middle
+of these functions but that's false
+
+in the free space we could then put the code:
+
+        ld      a, 18
+        ld      (0b000h), a
+        call    music_update
+        ld      a, (0f0f3h)
+        ld      (0b000h), a
+        <patched instruction>
+        <patched instruction>
+        ret
+
+we could then insert a
+<call xxx>
+and we would only need to copy over three instruction bytes
+
+POTENTIAL SOLUTION:
+
+in 0x53bf insert a JR to 0x5383
+0x18 0xc2
+
+gives me 16 bytes of free space
+
+what needs to go in there?
+
+        ld      a, 18
+        ld      (0b000h), a
+        call    music_update
+        ld      (hl), a
+        ret
+
+10 bytes. fits in the smaller gap
+
+we can then overwrite the ld(8000),a instruction
+with a call to this shim function
+music_update would need to do
+    ld a, 14
+    ld  hl, 0b000h
+    before returning
+
+still need to solve the music_start patching
+
+53ad JR to 539b
+
+what needs to go in there?
+
+        push hl
+        push de
+        push bc
+        di
+        ld      a, 18
+        ld      (0b000h), a
+        call    music_update
+        ld      (hl),a
+        ei
+        ret
+
+15 instructions. fits in the bigger gap
+
+music init function would need to do:
+        ld a,(f0f3)
+        ld hl, b000h
+        before returning
+
+we could overwrite the first three push instructions
+with a call
