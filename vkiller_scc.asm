@@ -1,3 +1,6 @@
+; -----------------------------------------------------------
+; Code for hooking in calls to the nemesis 3 SCC player
+
         output vkiller_patch00038.bin
         org     04038h
 
@@ -5,9 +8,13 @@
 
 
 
-        output  vkiller_patch010b6.bin
-        org     050b6h
+        output  vkiller_patch010b2.bin
+        org     050b2h
 
+        pop     af
+        ld      e, a  ; save song index for later
+        push    af
+        nop
         call    music_start_shim
 
 
@@ -39,25 +46,59 @@ music_start_shim:
         ret
 
 
+; -----------------------------------------------------------
+; The code below lives in nemesis 3 SCC player mapper banks
 
         output vkiller_patch25f30.bin
         org     0bf30h
 
 music_start:
-        ;di
-        ;ld      a, 15
-        ;ld      (05000h), a
-        ;ld      a, 0
-        ;ld      (05000h), a
+        ld      a, 16
+        ld      (07000h), a
+        ld      a, 17
+        ld      (09000h), a
+
+        ; if we are starting a sound effect, ignore
+        ld      a, e
+        and     0x80
+        jp      z,music_start_skip
+
+        ld      a,5
+        call    06003h  ; nemesis 3 song start function
+
+music_start_skip:
+        ld      a, (0f0f1h)
+        ld      (07000h), a
+        ld      a, 14
+        ld      (09000h), a
         ld      hl, 0b000h
         ld      a, 15
         ret
 
 music_update:
-        ;di
-        ;ld      a, 15
-        ;ld      (05000h), a
-        ;ld      a, 0
-        ;ld      (05000h), a
+        ld      a, 16
+        ld      (07000h), a
+        ld      a, 17
+        ld      (09000h), a
+
+        push    bc
+        push    de
+        push    hl
+        push    ix
+        push    iy
+        call    06006h  ; nemesis 3 song update function
+        pop     iy
+        pop     ix
+        pop     hl
+        pop     de
+        pop     bc
+
+        ld      a, (0f0f1h)
+        ld      (07000h), a
+        ld      a, 14
+        ld      (09000h), a
         ld      a, 15
         ret
+
+end_of_program:
+        assert end_of_program < 0c000h
