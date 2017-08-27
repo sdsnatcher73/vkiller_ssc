@@ -36,6 +36,45 @@ NEXT:
   0xcac0-0xce00 appears to be empty
   maybe that's enough?
 
+  NEW PLAN:
+
+  - map RAM into 8000-bfff and then copy the ROM into there
+    we can then use bc00-bfff as channel data RAM
+
+    I have got the music player running like this, but no sound is being output
+    also, I had to put the ROM->RAM copy in start_music because putting
+    it in the interrupt takes so long that it triggers another interrupt
+    which then causes things to go wrong
+
+    might be that we are not hearing anything because we are accessing SCC
+    at 09000h, but that now has RAM mapped so writing there doesn't do anything
+    BAH!!!
+
+    need more RAM
+    - can't map RAM into 0000-3fff because the BIOS lives there which we
+      use to control the PSG
+    - can't map RAM into 4000-7fff because the function that handles the interrupts
+      lives there
+    - can't map RAM into 8000-bfff because the SCC lives there
+    - can't swap out RAM in c000-ffff because the interrupt hook lives (fd9f) lives there
+
+  ANOTHER PLAN:
+
+  while we are running the music player, swap out the BIOS for RAM and use that
+  will need to patch all calls to BIOS 093h (write PSG) to use our own function:
+
+              di
+              out     (0A0h), a  ; set register
+              push    af
+              ld      a, e
+              ei
+              out     (0A1h), a  ; write value
+              pop     af
+
+  this way we can use the 0000-3fff RAM without having to copy the bios
+  it also allows us to prevent interrupts from being enabled when writing to the PSG
+
+
 
 DECOMPILING
 -----------

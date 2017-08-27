@@ -19,7 +19,7 @@ def patch_mapper(rom):
             rom[offset + 2] += 0x10
 
 PATCH_IGNORE_LIST = [0x20daa, 0x23340, 0x21171]
-CHANNEL_OFFSET = -0x16  # 0e00h -> 0cb00h
+CHANNEL_OFFSET = -0xc0  # 0e00h -> 02000h
 
 def patch_music_channel_locations(rom):
     """Patch scc player to move channel data locations"""
@@ -33,13 +33,23 @@ def patch_music_channel_locations(rom):
         if (rom[offset] in [0x01, 0x11, 0x21, 0x32, 0x3a] and
             (rom[offset + 2] & 0xfc) == 0xe0):
             rom[offset + 2] += CHANNEL_OFFSET
-            print(hex(offset))
+
+
+def patch_bios_psg_calls(rom):
+    """Patch replace calls to bios psg_write function with our own function"""
+    for offset in range(0x20000, len(rom) - 4):
+        if (rom[offset] == 0xcd and
+            rom[offset + 1] == 0x93 and
+            rom[offset + 2] == 0x00):
+            rom[offset + 1] = 0x00;
+            rom[offset + 2] = 0x7f;
 
 
 rom = loadrom('vkiller.rom')
 
 patch_mapper(rom)
 patch_music_channel_locations(rom)
+patch_bios_psg_calls(rom)
 
 
 subprocess.call(['cmd.exe', '/c', 'del', 'vkiller_patch*.bin'])

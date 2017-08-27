@@ -16,6 +16,9 @@
         push    af
         nop
         call    music_start_shim
+        nop
+        nop
+        nop
 
 
 
@@ -25,10 +28,10 @@
         db      018h  ; jr 05383h
         db      0c2h
 music_update_shim:
-        ld      a, 18
-        ld      (0b000h), a
+        ld      a, 16
+        ld      (07000h), a
         call    music_update
-        ld      (0b000h),a
+        ld      (07000h),a
         ret
 
 
@@ -39,8 +42,8 @@ music_update_shim:
         db      018h  ; jr 0539bh
         db      0ech
 music_start_shim:
-        ld      a, 18
-        ld      (0b000h), a
+        ld      a, 16
+        ld      (07000h), a
         call    music_start
         ld      (hl), a
         ret
@@ -49,55 +52,111 @@ music_start_shim:
 ; -----------------------------------------------------------
 ; The code below lives in nemesis 3 SCC player mapper banks
 
-        output vkiller_patch25f30.bin
-        org     0bf30h
+        output vkiller_patch21f00.bin
+        org     07f00h
+
+write_psg:
+        out     (0A0h), a  ; set register
+        push    af
+        ld      a, e
+        ei
+        out     (0A1h), a  ; write value
+        pop     af
+        ret
+
 
 music_start:
-        ld      a, 16
-        ld      (07000h), a
-        ld      a, 17
-        ld      (09000h), a
-
         ; if we are starting a sound effect, ignore
         ld      a, e
         and     0x80
         jp      z,music_start_skip
 
+        di
+        ; swap RAM into 0000-3fff
+        ld      c, 0a8h
+        in      b, (c)
+        ld      a, b
+        or      03h
+        out     (c), a
+
+        ; map music-player ROM pages into 8000-bfff
+        ld      a, 17
+        ld      (09000h), a
+        ld      a, 18
+        ld      (0b000h), a
+
+        ld      a, (02000h)
+        or      a
+        jr      z, skip_memory_clean
+
+        push    bc
+        ld      hl, 02000h
+        ld      de, 02001h
+        ld      bc, 00300h
+        ld      (hl), 0
+        ldir
+        pop     bc
+
+skip_memory_clean:
+
+        push bc
         ld      a,6
         call    06003h  ; nemesis 3 song start function
+        pop bc
+
+        ; restore BIOS ROM
+        out     (c), b
 
 music_start_skip:
-        ld      a, (0f0f1h)
-        ld      (07000h), a
+
+        di
         ld      a, 14
         ld      (09000h), a
-        ld      hl, 0b000h
+        ld      (0f0f2h), a
         ld      a, 15
+        ld      (0b000h), a
+        ld      (0f0f3h), a
+        ld      a, (0f0f1h)
+        ld      hl, 07000h
         ret
 
 music_update:
-        ld      a, 16
-        ld      (07000h), a
-        ld      a, 17
-        ld      (09000h), a
-
         push    bc
         push    de
         push    hl
         push    ix
         push    iy
+
+        ; map RAM into bank 0000-3fff
+        ld      c, 0a8h
+        in      b, (c)
+        push    bc
+        ld      a, b
+        or      03h
+        out     (c), a
+
+        ld      a, 17
+        ld      (09000h), a
+        ld      a, 18
+        ld      (0b000h), a
+
         call    06006h  ; nemesis 3 song update function
+
+        ; restore ROM
+        pop     bc
+        out     (c), b
+ram_not_initialised:
+        ld      a, 14
+        ld      (09000h), a
+        ld      a, 15
+        ld      (0b000h), a
+        ld      a, (0f0f1h)
+
         pop     iy
         pop     ix
         pop     hl
         pop     de
         pop     bc
-
-        ld      a, (0f0f1h)
-        ld      (07000h), a
-        ld      a, 14
-        ld      (09000h), a
-        ld      a, 15
         ret
 
 end_of_program:
