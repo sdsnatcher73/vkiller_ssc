@@ -1,7 +1,7 @@
 ; -----------------------------------------------------------
 ; Code for hooking in calls to the nemesis 3 SCC player
 
-        output vkiller_patch00038.bin
+        output  vkiller_patch00038.bin
         org     04038h
 
         call    music_update_shim
@@ -63,7 +63,7 @@ music_start:
         and     0x80
         jp      z,music_start_skip
 
-        ld      a,5
+        ld      a,6
         call    06003h  ; nemesis 3 song start function
 
 music_start_skip:
@@ -102,3 +102,25 @@ music_update:
 
 end_of_program:
         assert end_of_program < 0c000h
+
+
+
+;--------------------------------------------------
+; disable vampire killer PSG music-only channels
+
+        output vkiller_patch1c9aa.bin
+        nop
+        nop
+        nop
+
+        output vkiller_patch1c9b3.bin
+        nop
+        nop
+        nop
+
+
+;------------------------------------------------
+; stop vkiller music playing 
+
+        output vkiller_patch010cc.bin
+        jp      0513fh

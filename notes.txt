@@ -1,3 +1,77 @@
+DONE:
+- Proof of concept
+  Nemesis SCC player is running inside vampire killer
+
+NEXT:
+- find free RAM to put scc player data
+  try 0xcac0?
+
+- ability to compile different songs into the player
+  - decompile konami music into text files
+  - recompile text files into the player
+
+- compile the music into a .kss file
+  so we can easily play it in winamp
+
+- write vampire killer music
+
+- disable playing of vampire killer songs
+  (only play sfx)
+
+- disable nemesis3 use of vkiller SFX PSG channel
+
+- handle music-fade/music-stop commands correctly
+
+- investigate bugs:
+  - music stops when entering the castle
+  - missing candles on 2nd screen
+
+  could be due to conflicting RAM usage
+  can't swap in another memory mapper page, because the
+  SCC player calls the bios, and the bios stores info
+  in the f000-ffff area
+
+  I managed to relocate the channel data but now i AM
+  struggling to find empty ram to put it.
+  0xcac0-0xce00 appears to be empty
+  maybe that's enough?
+
+
+DECOMPILING
+-----------
+- Need some way to represent 'addresses'
+  addresses are used for:
+  - GOTO
+  - LOOPGOTO
+  - LOOP2
+  - CALL
+
+how do we represent these?
+? can GOTO only loop back to an earlier part of the song?
+? or can it jump to an entirely different section?
+if it can only jump backwards then we can represent
+loops with {}
+calls would be done using functions, e.g.
+
+t0 = {abcdabdc}5
+t1 = { }
+
+first thing we should probably do is decompile to an
+internal representation
+'decode_track' sort of does this, except it unrolls
+all the loops/calls
+
+we then need to serialize/deserialize the internal
+represenation to a text file
+
+probably dont need a fancy parser. mlllib does something simple
+
+
+
+
+OLD NOTES
+---------
+
 4) replace a PSG player with SCC player
    allows us to put SCC music in Usas or Galious
    is this doable? not sure
@@ -125,6 +199,28 @@ steps:
    test the rom - it should still work
 
 5) add calls to nemesis 3 music functions
+
+-----------------------------------------------------
+
+FINDING FREE MEMORY
+
+NEW PLAN:
+
+put shim code in 06000h bank
+put code in there which:
+- maps the 08000h-0bfffh data bank into 0c000h-0ffffh
+- map RAM into 08000h-0bfffh and copy the data in there
+some of the space at the end of 0bfffh can then be used
+for the channel data
+
+how do we find space for our extra code?
+- decompile the songs
+- recompile the songs at a higher address
+
+7506 - song addresses
+75ac - tracks start address
+
+potentially allows us to free 75ac-7fff
 
 -----------------------------------------------------
 
