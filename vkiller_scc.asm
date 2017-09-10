@@ -56,6 +56,21 @@ music_start_shim:
         org     07f00h
 
 write_psg:
+        cp      a, 7
+        jr      nz, not_register_seven
+        ; combine vkiller player bits with our own bits
+        and     011011011b
+        push    de
+        push    hl
+        ld      d, a
+        ld      hl, 0c097h
+        ld      a, (hl)
+        and     011100100b
+        or      d
+        ld      (hl), a  ; write combined bits back to vkiller state
+        pop     hl
+        pop     de
+not_register_seven:
         out     (0A0h), a  ; set register
         push    af
         ld      a, e
@@ -96,6 +111,10 @@ music_start:
         ld      (hl), 0
         ldir
         pop     bc
+
+        ld      hl, 00038h
+        ld      a, 0c9h
+        ld      (hl), a
 
 skip_memory_clean:
 
@@ -163,19 +182,46 @@ end_of_program:
         assert end_of_program < 0c000h
 
 
+; -----------------------------------------------------------
+; Disable SCC player PSG channel used for vkiller SFX
+
+        ;output vkiller_patch203ad.bin
+        ;org     063adh
+        ;nop
+        ;nop
+        ;nop
+
+        ;output vkiller_patch203b9.bin
+        ;org     063b9h
+        ;nop
+        ;nop
+        ;nop
+
+        ;output vkiller_patch203c52.bin
+        ;org     063c52h
+        ;nop
+        ;nop
+        ;nop
+
+
 
 ;--------------------------------------------------
 ; disable vampire killer PSG music-only channels
 
-        output vkiller_patch1c9aa.bin
+        output vkiller_patch1c9aa.bin  ; doesnt actually work!
         nop
         nop
         nop
 
-        output vkiller_patch1c9b3.bin
+        output vkiller_patch1c9b3.bin  ; doesnt actually work!
         nop
         nop
         nop
+
+        ;output vkiller_patch1c9bc.bin
+        ;nop
+        ;nop
+        ;nop
 
 
 ;------------------------------------------------

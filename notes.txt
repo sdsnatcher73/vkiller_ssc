@@ -1,67 +1,27 @@
-DONE:
-- Proof of concept
-  Nemesis SCC player is running inside vampire killer
+TODO:
+- fix SCC music corruption when starting level 1
+  this may be related to interrupts happening while 0000-3fff has RAM mapped in
+  I put in a workeround by writing a c9 (RTN) to 0038 (the BIOS interrupt address)
+  which stops it crashing, but there is still some music corruption
 
-NEXT:
-- find free RAM to put scc player data
-  try 0xcac0?
+- fix PSG register 7 related grinding interference in SFX
 
-- ability to compile different songs into the player
-  - decompile konami music into text files
-  - recompile text files into the player
-
-- compile the music into a .kss file
-  so we can easily play it in winamp
-
-- write vampire killer music
-
-- disable playing of vampire killer songs
-  (only play sfx)
-
-- disable nemesis3 use of vkiller SFX PSG channel
+- when converting to MML we should generate a newline every 4 bars
 
 - handle music-fade/music-stop commands correctly
 
-- investigate bugs:
-  - music stops when entering the castle
-  - missing candles on 2nd screen
+- ability to play different songs
 
-  could be due to conflicting RAM usage
-  can't swap in another memory mapper page, because the
-  SCC player calls the bios, and the bios stores info
-  in the f000-ffff area
+- make PSG drums louder(?)
+  they are currently much quieter than the SFX
 
-  I managed to relocate the channel data but now i AM
-  struggling to find empty ram to put it.
-  0xcac0-0xce00 appears to be empty
-  maybe that's enough?
 
-  NEW PLAN:
 
-  - map RAM into 8000-bfff and then copy the ROM into there
-    we can then use bc00-bfff as channel data RAM
-
-    I have got the music player running like this, but no sound is being output
-    also, I had to put the ROM->RAM copy in start_music because putting
-    it in the interrupt takes so long that it triggers another interrupt
-    which then causes things to go wrong
-
-    might be that we are not hearing anything because we are accessing SCC
-    at 09000h, but that now has RAM mapped so writing there doesn't do anything
-    BAH!!!
-
-    need more RAM
-    - can't map RAM into 0000-3fff because the BIOS lives there which we
-      use to control the PSG
-    - can't map RAM into 4000-7fff because the function that handles the interrupts
-      lives there
-    - can't map RAM into 8000-bfff because the SCC lives there
-    - can't swap out RAM in c000-ffff because the interrupt hook lives (fd9f) lives there
-
-  ANOTHER PLAN:
-
-  while we are running the music player, swap out the BIOS for RAM and use that
-  will need to patch all calls to BIOS 093h (write PSG) to use our own function:
+MEMORY (RAM) USAGE:
+  while we are running the music player, we swap out the BIOS for RAM and use that
+  for the ram used by the SCC music player.
+  this is because all the normal RAM is used by vkiller itself
+  need to patch all calls to BIOS 093h (write PSG) to use our own function:
 
               di
               out     (0A0h), a  ; set register
@@ -75,36 +35,66 @@ NEXT:
   it also allows us to prevent interrupts from being enabled when writing to the PSG
 
 
+fixing PSG interference between nemesis3 and vkiller player
+------------------------------------------------------------
+there is a single PSG register 7 which sets noise/tone channels on/off
+the two players are overwriting eachothers information here
+vkiller stores the state in C097 
+nemesis3 stores it in e298
+I changed the nemesis3 PSG write function so that when it writes to register 7, it
+only writes the bits for one channel and gets the other bits from c097
+it also updates its own bits in c097
+this stop the grinding interference for the PSG drums
+the vkiller PSG SFX still have some interference
+
+
+
+compiling music into nemesis3.kss
+---------------------------------
+
+nemesis3.kss layout is as follows:
+
+0050 - a
+2050 - 9
+4050 - 19
+6050 - b
+8050 - c
+a050 - d
+
+so to compile the data we need to skip a gap between 2050 and 6050
+(no idea why the kss file has bank 9 and 19 in there. they are not needed)
+
+nemesis 3 drums
+---------------
+c - ch
+c# - oh
+d - rim
+d# - snare hit
+e - snare slide
+f - tom hi
+f# - tom mid
+g - tom mid
+g# - tom lo
+a - bd
+
+
+
 
 DECOMPILING
 -----------
-- Need some way to represent 'addresses'
-  addresses are used for:
-  - GOTO
-  - LOOPGOTO
-  - LOOP2
-  - CALL
+TODO:
+- write out song tables
+  need to invent some kind of syntax for this
 
-how do we represent these?
-? can GOTO only loop back to an earlier part of the song?
-? or can it jump to an entirely different section?
-if it can only jump backwards then we can represent
-loops with {}
-calls would be done using functions, e.g.
-
-t0 = {abcdabdc}5
-t1 = { }
-
-first thing we should probably do is decompile to an
-internal representation
-'decode_track' sort of does this, except it unrolls
-all the loops/calls
-
-we then need to serialize/deserialize the internal
-represenation to a text file
-
-probably dont need a fancy parser. mlllib does something simple
-
+  @song(13,
+        give_my_heart_to_you_#0,
+        give_my_heart_to_you_#1,
+        give_my_heart_to_you_#2,
+        give_my_heart_to_you_#3,
+        give_my_heart_to_you_#4,
+        give_my_heart_to_you_#5,
+        give_my_heart_to_you_#6,
+        give_my_heart_to_you_#7)
 
 
 
@@ -125,12 +115,16 @@ OLD NOTES
    vampire killer:
    - channel data @ 0xc01c, 0xc030, 0xc044
    - music player update @ 0x8964
+   - music data around 0xa48a
    music player is similar in design, although the implementation is totally different
    0-0xc0    = note on
    0xc0-0xd0 = note off
    0xe?      = special commands
    0xea      = goto (I think)
    0xf?      = PSG drums(?) not sure
+
+   command execution function @ 0x8aca
+
 
   todo:
   - port vampire killer to use an scc mapper
