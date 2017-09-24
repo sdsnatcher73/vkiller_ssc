@@ -1,19 +1,15 @@
 TODO:
-- fix SCC music corruption when starting level 1
-  this may be related to interrupts happening while 0000-3fff has RAM mapped in
-  I put in a workeround by writing a c9 (RTN) to 0038 (the BIOS interrupt address)
-  which stops it crashing, but there is still some music corruption
-
-- fix PSG register 7 related grinding interference in SFX
-
-- when converting to MML we should generate a newline every 4 bars
+- fix boss music cutting out after a couple of seconds
 
 - handle music-fade/music-stop commands correctly
 
-- ability to play different songs
+- when converting to MML we should generate a newline every 4 bars
+  I put code for this in but it doesn't seem to work
 
 - make PSG drums louder(?)
   they are currently much quieter than the SFX
+
+- fix PSG register 7 related grinding interference in SFX
 
 
 
@@ -77,7 +73,20 @@ g - tom mid
 g# - tom lo
 a - bd
 
+instruments
 
+i23 = meaty sharp saw
+i1 = i19 = warm and meaty saw
+i29 = church organ
+i12 = sine wave
+i9 = organ
+i6 = soft square
+
+commands
+
+eaxx = start level
+dbxx = sustain level
+ebxxxx = attack time + something else
 
 
 DECOMPILING

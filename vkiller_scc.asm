@@ -74,7 +74,6 @@ not_register_seven:
         out     (0A0h), a  ; set register
         push    af
         ld      a, e
-        ei
         out     (0A1h), a  ; write value
         pop     af
         ret
@@ -94,6 +93,23 @@ music_start:
         or      03h
         out     (c), a
 
+        ; get subslot from page 3 (c000-ffff) and apply to page 0 (0000-3fff)
+        push    bc
+        push    hl
+        ld      hl, 0ffffh
+        ld      a, (hl)
+        cpl
+        push    af
+        ld      b, a
+        and     011000000b
+        rlca    
+        rlca
+        ld      c, a
+        ld      a, b
+        and     011111100b
+        or      c
+        ld      (hl), a
+
         ; map music-player ROM pages into 8000-bfff
         ld      a, 17
         ld      (09000h), a
@@ -105,25 +121,40 @@ music_start:
         jr      z, skip_memory_clean
 
         push    bc
+        push    de
         ld      hl, 02000h
         ld      de, 02001h
         ld      bc, 00300h
         ld      (hl), 0
         ldir
+        pop     de
         pop     bc
 
         ld      hl, 00038h
-        ld      a, 0c9h
+        ld      a, 076h
         ld      (hl), a
 
 skip_memory_clean:
 
         push bc
-        ld      a,6
+        ; 6 = track 0
+        ld      a,e
+        and     07fh
+        inc     a
+        inc     a
+        inc     a
+        inc     a
+        inc     a
+        inc     a
         call    06003h  ; nemesis 3 song start function
-        pop bc
+        pop     bc
 
-        ; restore BIOS ROM
+        pop     af
+        ld      (0ffffh), a
+        pop     hl
+        pop     bc
+
+        ; restore BIOS ROM       
         out     (c), b
 
 music_start_skip:
@@ -154,12 +185,30 @@ music_update:
         or      03h
         out     (c), a
 
+        ; get subslot from page 3 (c000-ffff) and apply to page 0 (0000-3fff)
+        ld      hl, 0ffffh
+        ld      a, (hl)
+        cpl
+        push    af
+        ld      b, a
+        and     011000000b
+        rlca    
+        rlca
+        ld      c, a
+        ld      a, b
+        and     011111100b
+        or      c
+        ld      (hl), a
+
         ld      a, 17
         ld      (09000h), a
         ld      a, 18
         ld      (0b000h), a
 
         call    06006h  ; nemesis 3 song update function
+
+        pop     af
+        ld      (0ffffh), a
 
         ; restore ROM
         pop     bc
