@@ -1,6 +1,4 @@
 TODO:
-- fix boss music cutting out after a couple of seconds
-
 - handle music-fade/music-stop commands correctly
 
 - when converting to MML we should generate a newline every 4 bars

@@ -147,6 +147,7 @@ skip_memory_clean:
         inc     a
         inc     a
         call    06003h  ; nemesis 3 song start function
+        call    06180h  ; play endlessly (without this the music will stop after a while)
         pop     bc
 
         pop     af
