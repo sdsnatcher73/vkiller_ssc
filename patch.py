@@ -18,7 +18,7 @@ def patch_mapper(rom):
             rom[offset + 2] in [0x60, 0x80, 0xa0]):
             rom[offset + 2] += 0x10
 
-PATCH_IGNORE_LIST = [0x20daa, 0x23340, 0x21171]
+PATCH_IGNORE_LIST = [0x20daa, 0x23340]
 CHANNEL_OFFSET = -0xc0  # 0e00h -> 02000h
 
 def patch_music_channel_locations(rom):

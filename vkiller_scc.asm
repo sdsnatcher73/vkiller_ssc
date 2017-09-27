@@ -59,17 +59,20 @@ write_psg:
         cp      a, 7
         jr      nz, not_register_seven
         ; combine vkiller player bits with our own bits
-        and     011011011b
         push    de
         push    hl
-        ld      d, a
+        ld      a, e
+        and     011011011b
+        ld      e, a
         ld      hl, 0c097h
         ld      a, (hl)
         and     011100100b
-        or      d
+        or      e
         ld      (hl), a  ; write combined bits back to vkiller state
         pop     hl
         pop     de
+        ld      e, a
+        ld      a, 7
 not_register_seven:
         out     (0A0h), a  ; set register
         push    af
@@ -80,11 +83,6 @@ not_register_seven:
 
 
 music_start:
-        ; if we are starting a sound effect, ignore
-        ld      a, e
-        and     0x80
-        jp      z,music_start_skip
-
         di
         ; swap RAM into 0000-3fff
         ld      c, 0a8h
@@ -116,10 +114,19 @@ music_start:
         ld      a, 18
         ld      (0b000h), a
 
-        ld      a, (02000h)
-        or      a
-        jr      z, skip_memory_clean
+        ; interpret the command
+        ld      a, e
+        cp      0xfc  ; 0xfc and higher = commands: fade out, pause, etc.
+        jr      nc, music_start_command
+        and     0x80  ; 0x80 and higher = start song
+        jr      z, music_start_skip  ; anything else = play SFX etc
 
+        ; start playing a new song
+        ld      a,e
+        and     07fh
+        add     a, 6
+
+        ; clear music player state
         push    bc
         push    de
         ld      hl, 02000h
@@ -130,25 +137,24 @@ music_start:
         pop     de
         pop     bc
 
-        ld      hl, 00038h
-        ld      a, 076h
-        ld      (hl), a
+        jr      music_start_call
 
-skip_memory_clean:
+music_start_command:
+        and     03h
+        ld      d, 0
+        ld      e, a
+        ld      hl, command_convert_table
+        add     hl, de
+        ld      a, (hl)
 
-        push bc
-        ; 6 = track 0
-        ld      a,e
-        and     07fh
-        inc     a
-        inc     a
-        inc     a
-        inc     a
-        inc     a
-        inc     a
+music_start_call:
+        push    bc
         call    06003h  ; nemesis 3 song start function
-        call    06180h  ; play endlessly (without this the music will stop after a while)
+        ;call    06180h  ; play endlessly (without this the music will stop after a while)
+        ; = command 0x83
         pop     bc
+
+music_start_skip:
 
         pop     af
         ld      (0ffffh), a
@@ -157,8 +163,6 @@ skip_memory_clean:
 
         ; restore BIOS ROM       
         out     (c), b
-
-music_start_skip:
 
         di
         ld      a, 14
@@ -227,6 +231,12 @@ ram_not_initialised:
         pop     de
         pop     bc
         ret
+
+command_convert_table:
+        db      081h  ; 0fch = ?
+        db      082h  ; 0fdh = pause
+        db      081h  ; 0feh = unpause
+        db      084h  ; 0ffh = fade out
 
 end_of_program:
         assert end_of_program < 0c000h
