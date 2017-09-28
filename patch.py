@@ -18,19 +18,19 @@ def patch_mapper(rom):
             rom[offset + 2] in [0x60, 0x80, 0xa0]):
             rom[offset + 2] += 0x10
 
-PATCH_IGNORE_LIST = [0x20daa, 0x23340]
+PATCH_IGNORE_LIST = [0x20daa, 0x23340, 0x20beb]
 CHANNEL_OFFSET = -0xc0  # 0e00h -> 02000h
 
 def patch_music_channel_locations(rom):
     """Patch scc player to move channel data locations"""
-    for offset in range(0x20000, len(rom) - 4):
+    for offset in range(0x20000, 0x213f0):
         if offset in PATCH_IGNORE_LIST:
             continue
         if (rom[offset] == 0xdd and
             rom[offset + 1] == 0x21 and
             (rom[offset + 3] & 0xfc) == 0xe0):
             rom[offset + 3] += CHANNEL_OFFSET
-        if (rom[offset] in [0x01, 0x11, 0x21, 0x32, 0x3a] and
+        if (rom[offset] in [0x01, 0x11, 0x21, 0x32, 0x3a, 0x22, 0x2a] and
             (rom[offset + 2] & 0xfc) == 0xe0):
             rom[offset + 2] += CHANNEL_OFFSET
 

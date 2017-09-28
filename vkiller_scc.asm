@@ -118,6 +118,8 @@ music_start:
         ld      a, e
         cp      0xfc  ; 0xfc and higher = commands: fade out, pause, etc.
         jr      nc, music_start_command
+        or      a
+        jr      z, music_stop
         and     0x80  ; 0x80 and higher = start song
         jr      z, music_start_skip  ; anything else = play SFX etc
 
@@ -139,6 +141,21 @@ music_start:
 
         jr      music_start_call
 
+music_stop:
+        ; clear music player state
+        push    bc
+        push    de
+        ld      hl, 02000h
+        ld      de, 02001h
+        ld      bc, 00300h
+        ld      (hl), 0
+        ldir
+        pop     de
+        pop     bc
+
+        ld      a, 081h
+        jr      music_start_call
+
 music_start_command:
         and     03h
         ld      d, 0
@@ -151,7 +168,7 @@ music_start_call:
         push    bc
         call    06003h  ; nemesis 3 song start function
         ;call    06180h  ; play endlessly (without this the music will stop after a while)
-        ; = command 0x83
+        ; = command 0x83 - doesn't seem to be needed anymore(?)
         pop     bc
 
 music_start_skip:

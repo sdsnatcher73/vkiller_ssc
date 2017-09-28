@@ -1,10 +1,13 @@
 TODO:
-- music corruption during 'stage clear' music
+- boss music has a false note in it (on the extra melody that I added)
+  (when playing in the game? not when playing in KSS player???)
+  only happens on the first loop, second loop is ok
 
-- music corruption after dying
-  the dying music itself is also corrupt if I make it the 'clear' music
-  if I make it the 'intro' music it plays ok, but then after the music restarts,
-  that music is corrupt, at least temporarily
+- corrupt sounds playing on boot (OpenMSX)
+
+- fix PSG register 7 related grinding interference in SFX
+  this is caused by the nemesis 3 player overwriting the PSG settings for channel 7
+  that were set by the vkiller SFX player (I think?)
 
 - when converting to MML we should generate a newline every 4 bars
   I put code for this in but it doesn't seem to work
@@ -12,11 +15,21 @@ TODO:
 - make PSG drums louder(?)
   they are currently much quieter than the SFX
 
-- fix PSG register 7 related grinding interference in SFX
+- write SCC versions of all the other music
 
 
 
-MEMORY (RAM) USAGE:
+music corruption when changing songs
+------------------------------------
+when changing songs, the music must first be stopped using command 00
+(command 83 on nemesis 3 player). Without this, the music_start code can get
+interrupted by the music player that runs on the interrupt. this can then cause
+the first few notes of the new song to have the wrong frequency
+
+
+
+MEMORY (RAM) USAGE
+------------------
   while we are running the music player, we swap out the BIOS for RAM and use that
   for the ram used by the SCC music player.
   this is because all the normal RAM is used by vkiller itself
@@ -50,7 +63,6 @@ the vkiller PSG SFX still have some interference
 
 compiling music into nemesis3.kss
 ---------------------------------
-
 nemesis3.kss layout is as follows:
 
 0050 - a
