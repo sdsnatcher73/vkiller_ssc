@@ -1,7 +1,8 @@
 TODO:
-- boss music has a false note in it (on the extra melody that I added)
-  (when playing in the game? not when playing in KSS player???)
-  only happens on the first loop, second loop is ok
+- the gameover screen disappears too quickly
+  I guess it's waiting for the vkiller PSG music to finish?
+  the game over screen waits while c0a7 is nonzero
+  so we need to set that to 1 while the SCC music is playing
 
 - corrupt sounds playing on boot (OpenMSX)
 
@@ -9,13 +10,14 @@ TODO:
   this is caused by the nemesis 3 player overwriting the PSG settings for channel 7
   that were set by the vkiller SFX player (I think?)
 
-- when converting to MML we should generate a newline every 4 bars
-  I put code for this in but it doesn't seem to work
-
 - make PSG drums louder(?)
   they are currently much quieter than the SFX
 
+- sprite flickering at the top of the screen
+  slowdown (probably related)
+
 - write SCC versions of all the other music
+
 
 
 
@@ -91,11 +93,16 @@ a - bd
 instruments
 
 i23 = meaty sharp saw
-i1 = i19 = warm and meaty saw
+i27 = ring mod lead
+i32 = similar meaty sharp saw
+i1 = i14 = i19 = warm and meaty saw
 i29 = church organ
 i12 = sine wave
+i7 = higher sine wave
 i9 = organ
+i3 = nice square
 i6 = soft square
+i10 = double soft organ
 
 commands
 
@@ -413,7 +420,7 @@ what needs to go in there?
         push de
         push bc
         di
-        ld      a, 18
+        ld      a, 18 
         ld      (0b000h), a
         call    music_update
         ld      (hl),a
