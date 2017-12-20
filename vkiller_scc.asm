@@ -8,8 +8,8 @@
 
 
 
-        output  vkiller_patch010b2.bin
-        org     050b2h
+        output  vkiller_patch010ac.bin
+        org     050ach
 
         pop     af
         ld      e, a  ; save song index for later
@@ -22,26 +22,19 @@
 
 
 
-        output vkiller_patch013bf.bin
-        org     053bfh  ; space: 18 bytes
+        output vkiller_patch01c8a.bin
+        org     05c8ah  ; space: 18 bytes
 
-        db      018h  ; jr 05383h
-        db      0c2h
 music_update_shim:
+        di
         ld      a, 16
         ld      (07000h), a
         call    music_update
         ld      (07000h),a
         ret
 
-
-
-        output vkiller_patch0139b.bin
-        org     0539bh  ; space: 12 bytes
-
-        db      018h  ; jr 0539bh
-        db      0ech
 music_start_shim:
+        di
         ld      a, 16
         ld      (07000h), a
         call    music_start
@@ -83,6 +76,8 @@ not_register_seven:
 
 map_slots:
         ; map RAM into bank 0000-3fff
+        ; returns original value of #ffff in a
+        ; returns original slot select in b/c
         ld      c, 0a8h
         in      b, (c)
         push    bc
@@ -275,19 +270,28 @@ end_of_program:
         ;nop
 
 
+;----------------------------------------------
+; when SCC player is paused, pause ALL channels
+; (original version keeps one channel playing (the SFX channel?)
+
+        output vkiller_patch20399.bin
+        ret nz
+        nop
+        nop
+
 
 ;--------------------------------------------------
 ; disable vampire killer PSG music-only channels
 
-        output vkiller_patch1c9aa.bin  ; doesnt actually work!
-        nop
-        nop
-        nop
+        ;output vkiller_patch1c9aa.bin  ; doesnt actually work!
+        ;nop
+        ;nop
+        ;nop
 
-        output vkiller_patch1c9b3.bin  ; doesnt actually work!
-        nop
-        nop
-        nop
+        ;output vkiller_patch1c9b3.bin  ; doesnt actually work!
+        ;nop
+        ;nop
+        ;nop
 
         ;output vkiller_patch1c9bc.bin
         ;nop
@@ -298,5 +302,19 @@ end_of_program:
 ;------------------------------------------------
 ; stop vkiller music playing 
 
-        output vkiller_patch010cc.bin
-        jp      0513fh
+        output vkiller_patch010c6.bin
+        jp      05131h
+
+;-------------------------------------------------
+; Data to make Game Master 2 work
+; 
+; This is a header at the start of the rom that contains the RC code
+; and information about how to change the starting stage and number
+; of lives.
+; when we expand the vampire killer ROM to 256K, Game Master 2 no
+; longer recognizes the game. to fix this we need to change
+; the format of this header
+
+        output vkiller_patch00010.bin
+        db     043h, 044h, 007h, 044h, 0B8h, 000h, 0C0h, 004h
+        db     000h, 011h, 0C3h, 010h, 0C4h, 005h, 0C4h, 000h

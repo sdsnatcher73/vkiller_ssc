@@ -1,8 +1,9 @@
 """
 Patch a .rom file from Konami4 to Konami5 (SCC) mapper
 """
-import glob#
+import glob
 import subprocess
+import hashlib
 
 
 def loadrom(filename):
@@ -46,6 +47,12 @@ def patch_bios_psg_calls(rom):
 
 
 rom = loadrom('vkiller.rom')
+scc_rom = loadrom('nemesis3.rom')
+
+h = hashlib.md5(scc_rom[0x14000:0x1a000]).hexdigest()
+assert h == '61c33112a5a2cefd1df81dc1434aa42a'
+
+rom = rom + scc_rom[0x14000:0x1a000]
 
 patch_mapper(rom)
 patch_music_channel_locations(rom)

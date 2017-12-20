@@ -1,10 +1,13 @@
 TODO:
+- package patching + music compiling into a single repo
+
 - the gameover screen disappears too quickly
   I guess it's waiting for the vkiller PSG music to finish?
   the game over screen waits while c0a7 is nonzero
   so we need to set that to 1 while the SCC music is playing
 
-- corrupt sounds playing on boot (OpenMSX)
+- corrupt sounds playing on boot
+  (can be fixed by setting 0x2280 to 0x02 on boot)
 
 - fix PSG register 7 related grinding interference in SFX
   this is caused by the nemesis 3 player overwriting the PSG settings for channel 7
@@ -13,12 +16,14 @@ TODO:
 - make PSG drums louder(?)
   they are currently much quieter than the SFX
 
-- sprite flickering at the top of the screen
-  slowdown (probably related)
-
-- write SCC versions of all the other music
 
 
+turbofix patch (19 dec 2017)
+----------------------------
+I switched to base my patch on the 'turbofix' patch,
+because this fixes the glitchy sprites at the top and enables R800
+however this is now causing random lockups and music corruption in stage clear
+most likely because the interrupt handling is slightly different now
 
 
 music corruption when changing songs
@@ -27,7 +32,8 @@ when changing songs, the music must first be stopped using command 00
 (command 83 on nemesis 3 player). Without this, the music_start code can get
 interrupted by the music player that runs on the interrupt. this can then cause
 the first few notes of the new song to have the wrong frequency
-
+<- not relevant anymore because we disable interrupts throughout
+   the 'start music' function???
 
 
 MEMORY (RAM) USAGE
