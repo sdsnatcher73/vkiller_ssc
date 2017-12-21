@@ -11,6 +11,13 @@ def loadrom(filename):
     with open(filename, 'rb') as stream:
         return bytearray(stream.read())
 
+
+def check_hash(data, expected_hash):
+    """Check that the data is what we expect"""
+    h = hashlib.md5(data).hexdigest()
+    assert h == expected_hash, 'Incorrect hash. Are you using the right ROM?'
+
+
 def patch_mapper(rom):
     """Patch mapper writes from Konami4 to Konami5"""
     for offset in range(len(rom) - 2):
@@ -48,9 +55,8 @@ def patch_bios_psg_calls(rom):
 
 rom = loadrom('vkiller.rom')
 scc_rom = loadrom('nemesis3.rom')
-
-h = hashlib.md5(scc_rom[0x14000:0x1a000]).hexdigest()
-assert h == '61c33112a5a2cefd1df81dc1434aa42a'
+check_hash(rom, '66da3107684286d1eba45efb8eae9113')
+check_hash(scc_rom[0x14000:0x1a000], '61c33112a5a2cefd1df81dc1434aa42a')
 
 rom = rom + scc_rom[0x14000:0x1a000]
 
