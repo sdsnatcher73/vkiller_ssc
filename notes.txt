@@ -1,17 +1,14 @@
 TODO:
-- package patching + music compiling into a single repo
+- fix PSG register 7 related grinding interference in SFX
+  this is caused by the nemesis 3 player overwriting the PSG settings for channel 7
+  that were set by the vkiller SFX player (I think?)
 
 - the gameover screen disappears too quickly
   I guess it's waiting for the vkiller PSG music to finish?
   the game over screen waits while c0a7 is nonzero
   so we need to set that to 1 while the SCC music is playing
 
-- corrupt sounds playing on boot
-  (can be fixed by setting 0x2280 to 0x02 on boot)
-
-- fix PSG register 7 related grinding interference in SFX
-  this is caused by the nemesis 3 player overwriting the PSG settings for channel 7
-  that were set by the vkiller SFX player (I think?)
+- package patching + music compiling into a single repo
 
 - make PSG drums louder(?)
   they are currently much quieter than the SFX
@@ -24,6 +21,9 @@ I switched to base my patch on the 'turbofix' patch,
 because this fixes the glitchy sprites at the top and enables R800
 however this is now causing random lockups and music corruption in stage clear
 most likely because the interrupt handling is slightly different now
+
+sidenote: the turbofix patch causes graphics corruption on the ending
+titles (when you complete the game)
 
 
 music corruption when changing songs

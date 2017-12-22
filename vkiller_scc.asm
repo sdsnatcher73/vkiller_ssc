@@ -41,6 +41,18 @@ music_start_shim:
         ld      (hl), a
         ret
 
+initialize:
+        xor     a
+        call    0509fh
+        jp      04075h
+
+
+; -----------------------------------------------------------
+; hook to initialize music player on game boot
+
+        output vkiller_patch00002.bin
+        dw      initialize
+
 
 ; -----------------------------------------------------------
 ; The code below lives in nemesis 3 SCC player mapper banks
@@ -263,11 +275,11 @@ end_of_program:
         ;nop
         ;nop
 
-        ;output vkiller_patch203c52.bin
-        ;org     063c52h
-        ;nop
-        ;nop
-        ;nop
+        output vkiller_patch203c52.bin
+        org     063c52h
+        nop
+        nop
+        nop
 
 
 ;----------------------------------------------
