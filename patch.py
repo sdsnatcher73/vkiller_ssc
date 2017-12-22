@@ -49,8 +49,8 @@ def patch_bios_psg_calls(rom):
         if (rom[offset] == 0xcd and
             rom[offset + 1] == 0x93 and
             rom[offset + 2] == 0x00):
-            rom[offset + 1] = 0x00;
-            rom[offset + 2] = 0x7f;
+            rom[offset + 1] = 0xf0;
+            rom[offset + 2] = 0x7e;
 
 
 rom = loadrom('vkiller.rom')

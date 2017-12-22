@@ -57,22 +57,37 @@ initialize:
 ; -----------------------------------------------------------
 ; The code below lives in nemesis 3 SCC player mapper banks
 
-        output vkiller_patch21f00.bin
-        org     07f00h
+        output vkiller_patch21ef0.bin
+        org     07ef0h
 
 write_psg:
+        cp      a, 4
+        ret     z
+        cp      a, 5
+        ret     z
+
+        cp      a, 10
+        ret     z
+
         cp      a, 7
         jr      nz, not_register_seven
+
+        ; if the game is paused, don't write PSG ch7
+        ; this is to prevent interference with the game paused jingle
+        ld      a, (02280h)
+        and     2
+        ret     nz  ; paused
+
         ; combine vkiller player bits with our own bits
         push    de
         push    hl
         ld      a, e
-        and     011011011b
+        or      00100100b
         ld      e, a
         ld      hl, 0c097h
         ld      a, (hl)
-        and     011100100b
-        or      e
+        or      00011011b
+        and     e
         ld      (hl), a  ; write combined bits back to vkiller state
         pop     hl
         pop     de
@@ -250,7 +265,7 @@ command_convert_table:
         db      0     ; 0f8h = ?
         db      0     ; 0f9h = ?
         db      0     ; 0fah = ?
-        db      082h  ; 0fbh = pause (hourglass0
+        db      082h  ; 0fbh = pause (hourglass)
         db      081h  ; 0fch = unpause (hourglass)
         db      082h  ; 0fdh = pause (F1)
         db      081h  ; 0feh = unpause (F1)
@@ -275,11 +290,11 @@ end_of_program:
         ;nop
         ;nop
 
-        output vkiller_patch203c52.bin
-        org     063c52h
-        nop
-        nop
-        nop
+        ;output vkiller_patch203c52.bin
+        ;org     063c52h
+        ;nop
+        ;nop
+        ;nop
 
 
 ;----------------------------------------------
