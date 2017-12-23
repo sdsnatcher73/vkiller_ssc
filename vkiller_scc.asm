@@ -44,14 +44,14 @@ music_start_shim:
 initialize:
         xor     a
         call    0509fh
-        jp      04075h
+        jp      05dabh
 
 
 ; -----------------------------------------------------------
 ; hook to initialize music player on game boot
 
-        output vkiller_patch00002.bin
-        dw      initialize
+        output vkiller_patch00099.bin
+        call    initialize
 
 
 ; -----------------------------------------------------------

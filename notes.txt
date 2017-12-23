@@ -1,13 +1,4 @@
 TODO:
-- fix PSG register 7 related grinding interference in SFX
-  this is caused by the nemesis 3 player overwriting the PSG settings for channel 7
-  that were set by the vkiller SFX player (I think?)
-
-- the gameover screen disappears too quickly
-  I guess it's waiting for the vkiller PSG music to finish?
-  the game over screen waits while c0a7 is nonzero
-  so we need to set that to 1 while the SCC music is playing
-
 - package patching + music compiling into a single repo
 
 - make PSG drums louder(?)
