@@ -1,4 +1,5 @@
 TODO:
+- Ability to generate a .kss file with the music
 - am I allowed to roll the turbofix patch into mine and release as an IPS?
 
 

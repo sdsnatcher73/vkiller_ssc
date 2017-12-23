@@ -33,19 +33,6 @@ of Vampire Killer with SCC music.
 
 
 
-How does it work?
------------------
-This new version of contains new versions of all the Vampire Killer songs
-which have been re-arranged to take advantage of the extra SCC channels and
-the different SCC sounds. So it's much more than a simple "PSG to SCC"
-conversion.
-The SCC music is played on the Nemesis 3 SCC player code, which has been
-integrated into the Vampire Killer ROM. All sounds effects are still played
-using Vampire Killer's own PSG music player.
-The new SCC music has been written in a MML-style language (see mml/vkiller_scc.mml)
-and then compiled into the Konami music format and written into the ROM.
-
-
 TurboFix Support
 ----------------
 This patch is applied on top of the Vampire Killer 'TurboFix' patch, which
@@ -66,7 +53,35 @@ The screen won't update immediately, so it might seem as if it's doesn't
 do anything, but it does.
 
 Press 'I' for INVINCIBILITY.
-This will temporarily make you glow red, the same as picking up an 
+This will temporarily make you glow red. It's the same effect as picking up an 
 invincibility ring.
 
-This is the same effect a picking up an invicibility
+
+How does it work?
+-----------------
+All the songs in this new version of Vampire Killer have been re-arranged
+to take advantage of the extra SCC channels and the different SCC sounds.
+So it's much more than a simple "PSG to SCC" conversion.
+The SCC music is played on the Nemesis 3 SCC player code, which has been
+integrated into Vampire Killer. All sounds effects are still played
+using Vampire Killer's own PSG music player.
+
+The new SCC music has been written in a MML-style language (see
+mml/vkiller_scc.mml) and then compiled into the Konami music format and
+written into the ROM.
+
+First I reverse engineered the Konami sound format. I wrote some code that
+can decode the sound format to MIDI files. I have this working for many
+Konamis including Solid Snake and SD Snatcher. It's fascinating to see how
+the file format changed from game to game, what all the different commands
+are that the music composers had access to, and how they used it to make
+their music. I intend to release more information about this in the future,
+and I also will release the tools I wrote to decompile Konami music.
+
+To generate the new music I decompiled the Vampire Killer music into MIDI,
+and then loaded them up into Ableton Live where I added extra harmonies
+and chords. I then converted the MIDI to a text representation of Konami's
+SCC music data format. This text file format is similar to MML.
+I then edited the MML, adding instruments and commands (volume, envelope,
+tremolo) and then converted that back into konami SCC music format which
+is then written into the ROM.
