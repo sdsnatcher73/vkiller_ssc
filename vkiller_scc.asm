@@ -27,6 +27,15 @@
 
 music_update_shim:
         di
+
+        ; infinite lives
+        ;ld      a, 099h
+        ;ld      (0c410h), a
+
+        ; infinite power
+        ;ld      a, 020h
+        ;ld      (0c415h), a
+
         ld      a, 16
         ld      (07000h), a
         call    music_update

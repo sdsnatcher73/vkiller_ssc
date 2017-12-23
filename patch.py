@@ -5,6 +5,9 @@ import glob
 import subprocess
 import hashlib
 
+from konami_scc.compile import compile
+from konami_scc.games import nemesis3
+
 
 def loadrom(filename):
     """Load a rom file"""
@@ -81,6 +84,8 @@ for patch_filename in patches:
     data = loadrom(patch_filename)
     for i in range(len(data)):
         rom[offset + i] = data[i]
+
+compile('mml\\vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
 
 with open('vkiller_scc.rom', 'wb') as stream:
     stream.write(rom)
