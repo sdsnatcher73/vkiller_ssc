@@ -28,14 +28,39 @@
 music_update_shim:
         di
 
-        ; infinite lives
-        ;ld      a, 099h
-        ;ld      (0c410h), a
+        ; read keyboard
+        in      a, (0aah)
+        and     0f0h
+        or      3
+        out     (0aah), a
+        in      a, (0a9h)
 
-        ; infinite power
-        ;ld      a, 020h
-        ;ld      (0c415h), a
+        bit     4, a
+        jr      nz, skip_give_cheat
+        ; give full health + various items
+        ld      a, 020h
+        ld      (0c415h), a
+        ld      a, 2
+        ld      (0c416h), a
+        ld      a, 018h
+        ld      (0c431h), a
+        ld      a, 0ffh
+        ld      (0c700h), a
+        ld      a, 081h
+        ld      (0c702h), a
+        ld      a, (0c701h)
+        or      0FEh
+        ld      (0c701h), a
+        jp      end_cheats
 
+skip_give_cheat:
+        bit     6, a
+        jr      nz, end_cheats
+        ; invincible
+        ld      a, 0ffh
+        ld      (0c434h), a
+
+end_cheats:
         ld      a, 16
         ld      (07000h), a
         call    music_update

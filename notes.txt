@@ -1,8 +1,5 @@
 TODO:
-- package patching + music compiling into a single repo
-
-- make PSG drums louder(?)
-  they are currently much quieter than the SFX
+- am I allowed to roll the turbofix patch into mine and release as an IPS?
 
 
 
