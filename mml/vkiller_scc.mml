@@ -1311,34 +1311,40 @@ finalboss_psg:
 nothing_to_lose1:
     @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
 
-    o4f2f2f2f#2f#2f#2g2g2g2g#2g#2g#2o3g1a#1g1a#1g1a#1g1a#1
+    o4f2f2f2f#2f#2f#2g2g2g2g#2g#2g#2
+nothing_to_lose1_0:
+    o3g1a#1g1a#1g1a#1g1a#1
     g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1
     o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1
     o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1o3a#1o2d1c1d#1c1d#1c1d#1c1d#1
     c1d#1c1d#1c1d#1c1d#1c1d#1c1d#1c1d#1c1d#1c1d#1c1d#1c1d#1c1d#1o3g4f#2f4
     e2d#2d2c#4c2o4b4a#2a2g#2
 
-    @goto(nothing_to_lose1)
+    @goto(nothing_to_lose1_0)
 
 
 nothing_to_lose2:
     @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
 
-    o4d2d2d2d2d2d2d2d2d2d2d2d2o5g4a2a#4
+    o4d2d2d2d2d2d2d2d2d2d2d2d2
+nothing_to_lose2_0:
+    o5g4a2a#4
     o4c2o5a#2a2g4a2a#4o4d2c2o5a#2a4a#2o4c4
     d2c2o5a#2a4a#2o4c4d#2d2c2o5a#4o4c2d4
     d#2d2c2o5a#4o4c2d4f2d#2d2c4d2d#4
     f2d#2d2c4d2d#4g2f2d#2g4f#2f4
     e2d#2d2c#4c2o5b4a#2a2g#2
 
-    @goto(nothing_to_lose2)
+    @goto(nothing_to_lose2_0)
 
 
 nothing_to_lose3:
     @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
 
+nothing_to_lose3_s:
+    o5g2g2g2g2g2g2g2g2g2g2g2g2
 nothing_to_lose3_0:
-    o5g2g2g2g2g2g2g2g2g2g2g2g1r1o4g4a2a#4
+    o4g4a2a#4
     o3c2o4a#2a2g4a2a#4o3d2c2o4a#2a4a#2o3c4
     d2c2o4a#2a4a#2o3c4d#2d2c2o4a#4o3c2d4
     d#2d2c2o4a#4o3c2d4f2d#2d2c4d2d#4
@@ -1350,7 +1356,7 @@ nothing_to_lose3_0:
 
 nothing_to_lose4:
     @cmd(fe01)i23@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
-    @goto(nothing_to_lose3_0)
+    @goto(nothing_to_lose3_s)
 
 
 
@@ -1382,7 +1388,6 @@ all_clear4:
 all_clear1d:
     @cmd(fe01)i29@cmd(ea06)@cmd(eb3821)@cmd(db00)t3r2t7
     @goto(all_clear1_0)
-
 
 ending1:
     @cmd(fe01)i19@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
