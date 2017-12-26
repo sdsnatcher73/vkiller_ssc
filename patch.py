@@ -90,4 +90,10 @@ compile('mml\\vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
 with open('vkiller_scc.rom', 'wb') as stream:
     stream.write(rom)
 
+kss = loadrom('nemesis3.kss')
+compile('mml\\vkiller_scc.mml', kss, nemesis3, -0x5fb0, 0x7506, 0x7ea4, hack=True)
+
+with open('vkiller_scc.kss', 'wb') as stream:
+    stream.write(kss)
+
 print('done')
