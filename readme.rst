@@ -57,8 +57,16 @@ This will temporarily make you glow red. It's the same effect as picking up an
 invincibility ring.
 
 
-How does it work?
------------------
+KSS File
+--------
+Apart from producing a patched ROM, patch.py also produces vkiller_scc.kss,
+which is a KSS version of the new SCC Vampire Killer soundtrack. You can
+use this together with the provided .m3u playlist file to listen to the
+new SCC Vampire Killer soundtrack (for example in Winamp).
+
+
+How was this made?
+------------------
 All the songs in this new version of Vampire Killer have been re-arranged
 to take advantage of the extra SCC channels and the different SCC sounds.
 So it's much more than a simple "PSG to SCC" conversion.
