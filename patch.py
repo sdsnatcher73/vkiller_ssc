@@ -61,7 +61,7 @@ scc_rom = loadrom('nemesis3.rom')
 check_hash(rom, '66da3107684286d1eba45efb8eae9113')
 check_hash(scc_rom[0x14000:0x1a000], '61c33112a5a2cefd1df81dc1434aa42a')
 
-rom = rom + scc_rom[0x14000:0x1a000]
+rom = rom + scc_rom[0x14000:0x1a000] + b' ' * 0x1a000
 
 patch_mapper(rom)
 patch_music_channel_locations(rom)
