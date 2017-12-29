@@ -21,9 +21,8 @@
         nop
 
 
-
         output vkiller_patch01c8a.bin
-        org     05c8ah  ; space: 18 bytes
+        org     05c8ah
 
 music_update_shim:
         di
@@ -68,6 +67,13 @@ end_cheats:
         ret
 
 music_start_shim:
+        ld      a, e
+        cp      a, 08dh
+        jr      nz, not_ending
+        ld      a, 1
+        call    04107h  ; prevent gfx corruption in ending titles
+        ld      a, e
+not_ending:
         di
         ld      a, 16
         ld      (07000h), a
@@ -91,8 +97,8 @@ initialize:
 ; -----------------------------------------------------------
 ; The code below lives in nemesis 3 SCC player mapper banks
 
-        output vkiller_patch21ef0.bin
-        org     07ef0h
+        output vkiller_patch21ee8.bin
+        org     07ee8h
 
 write_psg:
         cp      a, 4
@@ -146,6 +152,14 @@ map_slots:
         ld      a, b
         or      03h
         out     (c), a
+
+        ; SOFAROM uses these addresses for SCC patching
+        ; to take into account that we map RAM into page 0, we need
+        ; to change these values. this is a SOFAROM specific hack
+        ld      (0f6ebh), a
+        ld      a, (0f6eah)
+        or      03h
+        ld      (0f6eah), a
 
         ; get subslot from page 3 (c000-ffff) and apply to page 0 (0000-3fff)
         ld      hl, 0ffffh
