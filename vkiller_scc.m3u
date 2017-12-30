@@ -4,7 +4,7 @@
 # (c)1986 KONAMI
 #
 
-vkiller_scc.kss::KSS,11,[Vampire Killer] Prologue,9,,0
+vkiller_scc.kss::KSS,11,[Vampire Killer] Prologue,7,,0
 vkiller_scc.kss::KSS, 1,[Vampire Killer] Vampire Killer,30,0-
 vkiller_scc.kss::KSS, 8,[Vampire Killer] Poison Mind,28,0-
 vkiller_scc.kss::KSS,13,[Vampire Killer] Stage Clear,6,,0

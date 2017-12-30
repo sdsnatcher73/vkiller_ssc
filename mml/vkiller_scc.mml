@@ -479,19 +479,19 @@ wicked_lead3_1:
 
 
 boss_scc1:
-    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0a70)@cmd(db07)t8
+    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0a70)@cmd(db07)t7
 boss_scc1_0:
     o3c1g1d#1g1c1g1d#1g1d1g1f1g1d1g1f1g1c1g1d#1g1c1g1d#1g1c1g1d#1g1c1g1d#1g1c1g#1f1g#1c1g#1f1g#1c1g1d#1g1c1g1d#1g1d1g1f1g1d1g1f1g1c1g1f1g1c1g1f1g1
     @goto(boss_scc1_0)
 
 
 boss_scc1d:
-    @cmd(fe01)i29@cmd(ea05)@cmd(eb0a70)@cmd(db07)t4r3t8
+    @cmd(fe01)i29@cmd(ea05)@cmd(eb0a70)@cmd(db07)t2r6t7
     @goto(boss_scc1_0)
 
 
 boss_scc2:
-    @cmd(fe01)i29@cmd(ea07)@cmd(eb0a70)@cmd(db05)t8
+    @cmd(fe01)i29@cmd(ea07)@cmd(eb0a70)@cmd(db05)t7
 boss_scc2_0:
     r8r8r8r8r8r8r8r8
     r8r8r8r8r8r8r8r8
@@ -502,22 +502,22 @@ boss_scc2_1:
 
 
 boss_scc2d:
-    @cmd(fe01)i29@cmd(ea01)@cmd(eb0a70)@cmd(db05)t4r3t8
+    @cmd(fe01)i29@cmd(ea01)@cmd(eb0a70)@cmd(db05)t2r6t7
     @goto(boss_scc2_0)
 
 
 boss_scc3:
-    @cmd(fe01)i29@cmd(ea0a)@cmd(eb0540)@cmd(db03)t8
+    @cmd(fe01)i29@cmd(ea0a)@cmd(eb0540)@cmd(db03)t7
 boss_scc3_0:
     o3c8o4b8o3c8d#8f8g8o4b8o3c8
     @goto(boss_scc3_0)
 
 boss_psg0:
-    @cmd(fe01)@cmd(ea0c)@cmd(eb0340)@cmd(db09)t8
+    @cmd(fe01)@cmd(ea0c)@cmd(eb0340)@cmd(db09)t7
     @goto(boss_scc3_0)
 
 boss_psg1:
-    @cmd(fe01)@cmd(ea0c)@cmd(eb0340)@cmd(db09)t8
+    @cmd(fe01)@cmd(ea0c)@cmd(eb0340)@cmd(db09)t7
 boss_psg1_0:
     r8r8r8r8r8r8r8r8
 boss_psg1_1:
@@ -529,38 +529,38 @@ boss_psg1_1:
 death_drums:
     @cmd(fe04)t8
     d#1d#1
-    t12a1
+    t11a1
     @end()
 
 death_1:
     @cmd(fe04)t8o0i5g1g#1
     @cmd(fe01)i10@cmd(ea0c)@cmd(eb0953)@cmd(db05)t8@cmd(f214)@cmd(f165)
-    t12o2e1d#1o3b1o2d1c#1o3a1o2c1o3b5
+    t11o2e1d#1o3b1o2d1c#1o3a1o2c1o3b5
     @end()
 
 death_2:
     @cmd(fe01)i10@cmd(ea08)@cmd(eb0953)@cmd(db03)t8@cmd(f214)@cmd(f165)
-    r2t12o3b1a#1f#1a1g#1e1g1f#5
+    r2t11o3b1a#1f#1a1g#1e1g1f#5
     @end()
 
 death_3:
     @cmd(fe01)i10@cmd(ea08)@cmd(eb0953)@cmd(db03)t8@cmd(f214)@cmd(f165)
-    r2t12o3g1f#1d#1f#1f1c#1e1d#5
+    r2t11o3g1f#1d#1f#1f1c#1e1d#5
     @end()
 
 death_4:
     @cmd(fe01)i32@cmd(ea0c)@cmd(eb0953)@cmd(db04)t8
-    r2t12o4e1d#1o5b1o4d1c#1o5a1o4c1o5b5
+    r2t11o4e1d#1o5b1o4d1c#1o5a1o4c1o5b5
     @end()
 
 death_5:
     @cmd(fe01)i10@cmd(ea04)@cmd(eb0953)@cmd(db01)t8@cmd(f214)@cmd(f165)
-    r2t12r1o2e1d#1o3b1o2d1c#1o3a1o2c1o3b5
+    r2t11r1o2e1d#1o3b1o2d1c#1o3a1o2c1o3b5
     @end()
 
 
 intro_psg1:
-    @cmd(fe01)i11@cmd(ea0c)@cmd(eb0953)@cmd(db03)t7o2
+    @cmd(fe01)i11@cmd(ea0c)@cmd(eb0953)@cmd(db03)t6o2
     @call(intro_psg1_0)
     o1c#6o2a#6g8r6g2a#2o1c#2
     @cmd(db0f)@cmd(ea06)@cmd(eb2f53)
@@ -570,22 +570,22 @@ intro_psg1:
     @end()
 
 intro_psg2:
-    @cmd(fe01)i35@cmd(ea0c)@cmd(eb0953)@cmd(db03)t7
+    @cmd(fe01)i35@cmd(ea0c)@cmd(eb0953)@cmd(db03)t6
     @cmd(fe01)i11o3
     @call(intro_psg1_0)
     o2g6g6c#8r6c#2g2g2@cmd(ebf000)g6g10
     @end()
 
 intro_psg3:
-    @cmd(fe01)i11@cmd(ea0c)@cmd(eb7080)@cmd(db03)t7
+    @cmd(fe01)i11@cmd(ea0c)@cmd(eb7080)@cmd(db03)t6
     o4d2d#2g2f#2g2f#2f2f#2
 intro_psg3_0:
     o4g2a#2o3c#2d2
     @loop(2, intro_psg3_0)
     o4g2
-    @cmd(ea09)t2a#2a#2t3a#2t7
+    @cmd(ea09)t2a#2a#2a#2t6
     @cmd(ea0a)o3c#2d2g2
-    @cmd(ea09)t2a#2a#2t3a#2t7
+    @cmd(ea09)t2a#2a#2a#2t6
     @cmd(ea0a)o2c#2d2o3@cmd(ebf000)a#6a10
     @end()
 
@@ -594,27 +594,27 @@ intro_psg1_0:
     @rtn()
 
 intro_psg4:
-    @cmd(fe01)i23@cmd(ea0c)@cmd(eb7080)@cmd(db03)t7
+    @cmd(fe01)i23@cmd(ea0c)@cmd(eb7080)@cmd(db03)t6
     o5d2d#2g2f#2g2f#2f2f#2
 intro_psg4_0:
     o5g2a#2o4c#2d2
     @loop(2, intro_psg4_0)
     o5g2
-    @cmd(ea09)t2a#2a#2t3a#2t7
+    @cmd(ea09)t2a#2a#2a#2t6
     @cmd(ea0a)o4c#2d2g2
-    @cmd(ea09)t2a#2a#2t3a#2t7
+    @cmd(ea09)t2a#2a#2a#2t6
     @cmd(ea0a)o3c#2d2o4@cmd(ebf000)a#6a10
     @end()
 
 intro_psg5:
-    @cmd(fe01)i11@cmd(ea04)@cmd(eb0953)@cmd(db00)t1o2r10t7
+    @cmd(fe01)i11@cmd(ea04)@cmd(eb0953)@cmd(db00)t1o2r10t6
     @call(intro_psg1_0)
     o1c#6o2a#6g8r6g2a#2o1c#1
     @end()
 
 
 gameover_drums:
-    @cmd(fe04)t5
+    @cmd(fe04)t4
     e1e1a2a2e2a2a2d#2c#2
     e1e1a2a2e2a2a2d#2c#2
     a2d#2c#2a2d#2c#2d#2c#2d#2a2e1e1e2e2a2
@@ -622,84 +622,84 @@ gameover_drums:
 
 
 gameover_scc1:
-    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t5
+    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
     o3r2b2r2b2r2o2d2f#4r2o3b2r2b2r2o2d2g4
-    r2g2f#2f2f#2r2g2r2g2o3a#4r4b4
+    r2g2f#2f2f#2r2g2r2g2o3a#4r4b6
     @end()
 
 
 gameover_scc2:
-    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t5
+    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
     o3r2f#2r2f#2r2b2o2d4r2o3f#2r2f#2r2b2o2d4
-    r2d2c#2c2c#2r2d2r2d2o3f#4r4f#4
+    r2d2c#2c2c#2r2d2r2d2o3f#4r4f#6
     @end()
 
 
 gameover_scc3:
-    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t5
+    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
     o3r2d2r2d2r2f#2b4r2d2r2d2r2f#2b4
-    r2b2a#2a#2a#2r2b2r2b2c#4r4d4
+    r2b2a#2a#2a#2r2b2r2b2c#4r4d6
     @end()
 
 
 gameover_scc4:
-    @cmd(fe01)i32@cmd(ea0d)@cmd(eb0953)@cmd(db05)t5
+    @cmd(fe01)i32@cmd(ea0d)@cmd(eb0953)@cmd(db05)t4
     o5b1b1b2r2b2r2b2o4b4o5b1b1b2r2b2r2b2o4b4
-    o5b1b1o4f#2r2f#2r2o5f#2o4f#2r2f#2o5f#4r4b4
+    o5b1b1o4f#2r2f#2r2o5f#2o4f#2r2f#2o5f#4r4b6
     @end()
 
 gameover_scc5:
-    @cmd(fe01)i10@cmd(ea04)@cmd(eb0953)@cmd(db01)t1r9t5
+    @cmd(fe01)i10@cmd(ea04)@cmd(eb0953)@cmd(db01)t1r9t4
     o3r2b2r2b2r2o2d2f#4r2o3b2r2b2r2o2d2g4
-    r2g2f#2f2f#2r2g2r2g2o3a#4r4
+    r2g2f#2f2f#2r2g2r2g2o3a#4r6
     @end()
 
 
 clear_scc1:
-    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t5
+    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
 clear_scc1_0:
     o2d#4r2d#2r2f2r2d#2d2d2r2d2r2d#2r2d2c2d2d#2d2d#2f2g15
     @end()
 
 clear_scc2:
-    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t5
+    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
 clear_scc2_0:
     o2c4r2c2r2d2r2c2o3a#2a#2r2a#2r2o2c2r2o3a#2g2a#2o2c2o3a#2o2c2d2d#15
     @end()
 
 clear_scc3:
-    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t5
+    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
 clear_scc3_0:
     o2g4r2g2r2g2r2g2f2f2r2f2r2f2r2f2d#2f2g2f2g2a#2o1c15
     @end()
 
 clear_psg1:
-    @cmd(fe01)@cmd(ea0d)@cmd(eb0953)@cmd(db0a)t5
+    @cmd(fe01)@cmd(ea0d)@cmd(eb0953)@cmd(db0a)t4
     o4c1c1o3c2o4c2o3c2o4c2o3c2o4c2o3c1c1o5a#1a#1o4a#2o5a#2o4a#2o5a#2o4a#2o5a#2o4a#1a#1o5g#2g#2r2a#2a#2r2o4c16
     @end()
 
 clear_psg2:
-    @cmd(fe01)@cmd(ea0d)@cmd(eb0953)@cmd(db0a)t5
+    @cmd(fe01)@cmd(ea0d)@cmd(eb0953)@cmd(db0a)t4
     o3c1c1o2c2o3c2o2c2o3c2o2c2o3c2o2c1c1o5a#1a#1o3a#2o5a#2o3a#2o5a#2o3a#2o5a#2o3a#1a#1o5g#2g#2r2a#2a#2r2o3c16
     @end()
 
 ; @cmd(f220)@cmd(f141) tremolo
 
 clear_scc1d:
-    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t5r2@cmd(f220)@cmd(f141)
+    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
     @goto(clear_scc1_0)
 
 clear_scc2d:
-    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t5r2@cmd(f220)@cmd(f141)
+    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
     @goto(clear_scc2_0)
 
 clear_scc3d:
-    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t5r2@cmd(f220)@cmd(f141)
+    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
     @goto(clear_scc3_0)
 
 
 edge_lead_inst1:
-    @cmd(fe01)i10@cmd(ea0b)@cmd(eb015f)@cmd(db01)t7@cmd(f210)@cmd(f141)
+    @cmd(fe01)i10@cmd(ea0b)@cmd(eb015f)@cmd(db01)t6@cmd(f210)@cmd(f141)
     @rtn()
 
 edge_lead:
@@ -789,14 +789,14 @@ edge_lead2_1:
 
 
 edge_lead_0_echo:
-    @cmd(fe01)i1@cmd(ea03)@cmd(eb287f)@cmd(db01)t7@cmd(f220)@cmd(f141)
+    @cmd(fe01)i1@cmd(ea03)@cmd(eb287f)@cmd(db01)t6@cmd(f220)@cmd(f141)
 
     r1
     @goto(edge_lead_00)
 
 
 edge_lead_0_psg_echo:
-    @cmd(fe01)i1@cmd(ea03)@cmd(eb287f)@cmd(db02)t7@cmd(f220)@cmd(f141)
+    @cmd(fe01)i1@cmd(ea03)@cmd(eb287f)@cmd(db02)t6@cmd(f220)@cmd(f141)
 
     r3
     @goto(edge_lead_00)
@@ -807,7 +807,7 @@ edge_bass_toms:
    @rtn()
 
 edge_bass:
-    @call(stalker_scc1_inst)t7
+    @call(stalker_scc1_inst)t6
     o3c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2
     c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2
 edge_bass_0:
@@ -832,7 +832,7 @@ edge_bass2_instr:
 
 
 edge_bass2:
-    @call(edge_bass2_instr)t7
+    @call(edge_bass2_instr)t6
     o5r16r16
     c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2
 edge_bass2_0:
@@ -856,7 +856,7 @@ edge_psg_instr:
     @rtn()
 
 edge_psg:
-    @cmd(fe01)@cmd(ea0a)@cmd(eb0340)@cmd(db09)t7
+    @cmd(fe01)@cmd(ea0a)@cmd(eb0340)@cmd(db09)t6
     o4c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2
     c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2c2c#2
 edge_psg_0:
@@ -877,7 +877,7 @@ edge_psg_0:
 
 
 edge_drums:
-    @cmd(fe04)t7
+    @cmd(fe04)t6
     a4a4a4a4a4a4a4a4a2a2a2a2a2a2a2a2
     a1a1a1a1a1a1a1a1e1e1e1e1d#1d#1d#1d#1
 
@@ -1361,36 +1361,36 @@ nothing_to_lose4:
 
 
 all_clear1:
-    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
 all_clear1_0:
     o3g4o2c4o3g#2f2b2o2d2c4o3g4g#2o2c2o3b1o2d#1d1f1d#9
     @end()
 
 
 all_clear2:
-    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
     o3c1d1d#1f1g4d2o4b2o3f2b2g4d#4f2f2g2g1b1o2c9
     @end()
 
 
 all_clear3:
-    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
     o4g1a1o3c1d1d#4c2o4g2o3c2g2d#4c4d2d2d#2d#1f1g9
     @end()
 
 
 all_clear4:
-    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
     o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4c1o3c1o4d1o3d1o4d1o3d1o5g4o4c9
     @end()
 
 
 all_clear1d:
-    @cmd(fe01)i29@cmd(ea06)@cmd(eb3821)@cmd(db00)t3r2t7
+    @cmd(fe01)i29@cmd(ea06)@cmd(eb3821)@cmd(db00)t3r2t6
     @goto(all_clear1_0)
 
 ending1:
-    @cmd(fe01)i19@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i19@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
     o2c2r2o3a2r2o2c3d1r2d#2r2d#2d2r2c2r2o3a2r2o2d#1
     d1c2o3a4o2c3d1r2c2d#3d1c2e4r6a3
     e1d#2r2d2r2c3o3a1r2a2o2c2d2d#2d2r2c2
@@ -1402,7 +1402,7 @@ ending1:
 
 
 ending2:
-    @cmd(fe01)i19@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i19@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
     o3a2r2e2r2a3b1r2o2c2r2c2o3b2r2a2r2e2r2o2c1
     o3b1a2e4a3b1r2a2o2c3o3b1a2b4o4e2f#2g#2
     o2e3r1c2r2o3b2r2a3e1r2e2a2b2o2c2o3b2r2a2o3
@@ -1414,14 +1414,14 @@ ending2:
 
 
 ending3:
-    @cmd(fe01)i32@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i32@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
     o5i32a2i7c2i32a2i7c2i32g2i7c2i32g2i7c#2i32f3f1i7c2i32e4e2f#2g#2a2
     i7c2i32a2i7c2i32g2i7c2i32g2i7c#2i32f3f1i7c2i32e4e2f#2g#2
     @goto(ending3)
 
 
 ending4:
-    @cmd(fe01)i19@cmd(ea05)@cmd(eb3821)@cmd(db01)t7r2
+    @cmd(fe01)i19@cmd(ea05)@cmd(eb3821)@cmd(db01)t6r2
 ending4_0:
     o2c2r2o3a2r2o2c3d1r2d#2r2d#2d2r2c2r2o3a2r2o2d#1
     d1c2o3a4o2c3d1r2c2d#3d1c2e4r6a3
@@ -1434,6 +1434,6 @@ ending4_0:
 
 
 ending_drums:
-    @cmd(fe04)t7
+    @cmd(fe04)t6
     a2c1c1d#2c1c1a2c1a1d#2a2c2a2d#2c2a2c2d#2c1d#1
     @goto(ending_drums)

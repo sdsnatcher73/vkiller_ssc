@@ -181,6 +181,10 @@ map_slots:
         ld      (09000h), a
         ld      a, 18
         ld      (0b000h), a
+
+        ld      a, 1
+        out     (0fch), a
+
         pop     af
         pop     hl
         pop     bc
