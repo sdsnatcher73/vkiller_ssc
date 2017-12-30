@@ -1,6 +1,7 @@
 """
 Patch a .rom file from Konami4 to Konami5 (SCC) mapper
 """
+import os
 import glob
 import subprocess
 import hashlib
@@ -68,7 +69,8 @@ patch_music_channel_locations(rom)
 patch_bios_psg_calls(rom)
 
 
-subprocess.call(['cmd.exe', '/c', 'del', 'vkiller_patch*.bin'])
+for filename in glob.glob('vkiller_patch*.bin'):
+    os.remove(filename)
 
 # compile patches
 try:
@@ -85,13 +87,13 @@ for patch_filename in patches:
     for i in range(len(data)):
         rom[offset + i] = data[i]
 
-compile('mml\\vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
+compile('mml/vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
 
 with open('vkiller_scc.rom', 'wb') as stream:
     stream.write(rom)
 
 kss = loadrom('nemesis3.kss')
-compile('mml\\vkiller_scc.mml', kss, nemesis3, -0x5fb0, 0x7506, 0x7ea4, hack=True)
+compile('mml/vkiller_scc.mml', kss, nemesis3, -0x5fb0, 0x7506, 0x7ea4, hack=True)
 
 with open('vkiller_scc.kss', 'wb') as stream:
     stream.write(kss)
