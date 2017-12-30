@@ -57,6 +57,17 @@ def patch_bios_psg_calls(rom):
             rom[offset + 2] = 0x7e;
 
 
+def save_kss_file(filename, rom):
+    """Save KSS file containing the new music"""
+    kss = loadrom(filename)
+    for page in [0x10, 0x0, 0x0, 0x11, 0x12, 0x13]:
+        offset = page * 8 * 1024
+        kss += rom[offset:offset + 8 * 1024]
+
+    with open('vkiller_scc.kss', 'wb') as stream:
+        stream.write(kss)
+
+
 rom = loadrom('vkiller.rom')
 scc_rom = loadrom('nemesis3.rom')
 check_hash(rom, '66da3107684286d1eba45efb8eae9113')
@@ -64,10 +75,16 @@ check_hash(scc_rom[0x14000:0x1a000], '61c33112a5a2cefd1df81dc1434aa42a')
 
 rom = rom + scc_rom[0x14000:0x1a000] + b' ' * 0x1a000
 
+# Nemesis 3 kick drum fix
+# See: https://www.msx.org/forum/msx-talk/general-discussion/nemesis-3-gofers-ambition-episode-ii-bass-drum-lost
+assert rom[0x21484] == 0x0a
+rom[0x21484] = 0xa0
+
+save_kss_file('vkiller_scc.kss', rom)
+
 patch_mapper(rom)
 patch_music_channel_locations(rom)
 patch_bios_psg_calls(rom)
-
 
 for filename in glob.glob('vkiller_patch*.bin'):
     os.remove(filename)
@@ -91,11 +108,5 @@ compile('mml/vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
 
 with open('vkiller_scc.rom', 'wb') as stream:
     stream.write(rom)
-
-kss = loadrom('nemesis3.kss')
-compile('mml/vkiller_scc.mml', kss, nemesis3, -0x5fb0, 0x7506, 0x7ea4, hack=True)
-
-with open('vkiller_scc.kss', 'wb') as stream:
-    stream.write(kss)
 
 print('done')

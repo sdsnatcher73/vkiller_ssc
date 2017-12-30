@@ -4,18 +4,18 @@
 # (c)1986 KONAMI
 #
 
-vkiller_scc.kss::KSS,11,[Vampire Killer] Prologue,7,,0
-vkiller_scc.kss::KSS, 1,[Vampire Killer] Vampire Killer,30,0-
-vkiller_scc.kss::KSS, 8,[Vampire Killer] Poison Mind,28,0-
-vkiller_scc.kss::KSS,13,[Vampire Killer] Stage Clear,6,,0
-vkiller_scc.kss::KSS, 2,[Vampire Killer] Stalker,43,13-
-vkiller_scc.kss::KSS, 3,[Vampire Killer] Wicked Child,56,10-
-vkiller_scc.kss::KSS, 6,[Vampire Killer] Walking on the Edge,42,6-
-vkiller_scc.kss::KSS, 5,[Vampire Killer] Heart of Fire,1:00,4-
-vkiller_scc.kss::KSS, 4,[Vampire Killer] Out of Time,32,0-
-vkiller_scc.kss::KSS,10,[Vampire Killer] Miss,4,,0
-vkiller_scc.kss::KSS,12,[Vampire Killer] Game Over,7,,0
-vkiller_scc.kss::KSS, 7,[Vampire Killer] Nothing to Lose,19,0-
-vkiller_scc.kss::KSS, 9,[Vampire Killer] Black Knight,17,0-
-vkiller_scc.kss::KSS,14,[Vampire Killer] All Clear,5,,0
-vkiller_scc.kss::KSS,15,[Vampire Killer] Ending,13,0-
+vkiller_scc.kss::KSS,16,[Vampire Killer] Prologue,7,,0
+vkiller_scc.kss::KSS, 6,[Vampire Killer] Vampire Killer,30,0-
+vkiller_scc.kss::KSS,13,[Vampire Killer] Poison Mind,28,0-
+vkiller_scc.kss::KSS,18,[Vampire Killer] Stage Clear,6,,0
+vkiller_scc.kss::KSS, 7,[Vampire Killer] Stalker,43,13-
+vkiller_scc.kss::KSS, 8,[Vampire Killer] Wicked Child,56,10-
+vkiller_scc.kss::KSS,11,[Vampire Killer] Walking on the Edge,42,6-
+vkiller_scc.kss::KSS,10,[Vampire Killer] Heart of Fire,1:00,4-
+vkiller_scc.kss::KSS, 9,[Vampire Killer] Out of Time,32,0-
+vkiller_scc.kss::KSS,15,[Vampire Killer] Miss,4,,0
+vkiller_scc.kss::KSS,17,[Vampire Killer] Game Over,7,,0
+vkiller_scc.kss::KSS,12,[Vampire Killer] Nothing to Lose,19,0-
+vkiller_scc.kss::KSS,14,[Vampire Killer] Black Knight,17,0-
+vkiller_scc.kss::KSS,19,[Vampire Killer] All Clear,5,,0
+vkiller_scc.kss::KSS,20,[Vampire Killer] Ending,13,0-
