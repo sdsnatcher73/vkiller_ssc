@@ -59,7 +59,7 @@ def patch_bios_psg_calls(rom):
 
 def save_kss_file(filename, rom):
     """Save KSS file containing the new music"""
-    kss = loadrom(filename)
+    kss = loadrom('nemesis3_kss_header.bin')
     for page in [0x10, 0x0, 0x0, 0x11, 0x12, 0x13]:
         offset = page * 8 * 1024
         kss += rom[offset:offset + 8 * 1024]
@@ -79,6 +79,9 @@ rom = rom + scc_rom[0x14000:0x1a000] + b' ' * 0x1a000
 # See: https://www.msx.org/forum/msx-talk/general-discussion/nemesis-3-gofers-ambition-episode-ii-bass-drum-lost
 assert rom[0x21484] == 0x0a
 rom[0x21484] = 0xa0
+
+# compile new music into ROM
+compile('mml/vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
 
 save_kss_file('vkiller_scc.kss', rom)
 
@@ -103,8 +106,6 @@ for patch_filename in patches:
     data = loadrom(patch_filename)
     for i in range(len(data)):
         rom[offset + i] = data[i]
-
-compile('mml/vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
 
 with open('vkiller_scc.rom', 'wb') as stream:
     stream.write(rom)

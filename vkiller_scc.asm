@@ -218,7 +218,7 @@ music_start:
         push    de
         ld      hl, 02000h
         ld      de, 02001h
-        ld      bc, 00300h
+        ld      bc, 00500h
         ld      (hl), 0
         ldir
         pop     de

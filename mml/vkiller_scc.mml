@@ -88,9 +88,9 @@ vampire_killer_scc3:
 vampire_killer_scc4:
     @cmd(fe01)i10 @cmd(ea0c)@cmd(eb0953)@cmd(db03)t7
     @cmd(ea09)@cmd(eb0953)i10 o3d1d1r1d1r1@cmd(ea09)@cmd(eb0853)d3@cmd(ea04)d3
-    @cmd(ea09)@cmd(eb0953)i8 o2r2d2e1f1g1a3d3a2r2e1g1o1c1o2g1
+    @cmd(ea06)@cmd(eb0953)i8 o2r2d2e1f1g1a3d3a2r2e1g1o1c1o2g1
     @cmd(ea09)@cmd(eb0953)i10 d1d1r1d1r1@cmd(ea09)@cmd(eb0853)d3@cmd(ea04)d3
-    @cmd(ea09)@cmd(eb0953)i8 o2r2d2e1f1g1a3d3a2r1c1c1c1c1c1
+    @cmd(ea06)@cmd(eb0953)i8 o2r2d2e1f1g1a3d3a2r1c1c1c1c1c1
     i10 r2f2r1o2f3e1f1e1c5r1
     i29a1r1a1g#1r1g#1g1r1a1r1a1g#1r1g#1g1r2
     i10o3f2r1o2f3e1f1e1c5r1
