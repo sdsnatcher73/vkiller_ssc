@@ -1,6 +1,9 @@
 TODO:
-- Ability to generate a .kss file with the music
-- am I allowed to roll the turbofix patch into mine and release as an IPS?
+- f5 continue
+- Level select cheat
+- Re-tweak all songs while listening on proper speakers
+  I wrote everything on my laptop, which has very bright sound. I seem to
+  have compensated for that by making all my music overly muffled
 
 
 
@@ -98,12 +101,17 @@ i9 = organ
 i3 = nice square
 i6 = soft square
 i10 = double soft organ
+i11 = saw bell lead - very often used as the lead sound
+i23 = hipass lead
 
 commands
 
-eaxx = start level
-dbxx = sustain level
+eaxx = start level e.g. @cmd(ea0a)
+dbxx = sustain level e.g. @cmd(db03) (must be lower than start level)
 ebxxxx = attack time + something else
+ddxxxx = envelope with fake echo e.g. @cmd(dd2732)
+f2xx = delay before tremolo starts e.g. @cmd(f209)
+f1xy = tremelo control (x=speed, y=amount) e.g. @cmd(f153)
 
 
 DECOMPILING

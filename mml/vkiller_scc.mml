@@ -1,6 +1,6 @@
 ; vkiller_scc
 
-@song(0, vampire_killer_drums, 0, 0, vampire_killer_scc1, vampire_killer_scc2, vampire_killer_scc3, vampire_killer_scc4, vampire_killer_scc5)
+@song(0, vampire_killer_drums, 0, 0, vampire_killer_scc2, vampire_killer_scc5, vampire_killer_scc3, vampire_killer_scc1, vampire_killer_scc4)
 @song(1, stalker_psg1, stalker_psg_drums, 0, stalker_scc2, stalker_scc3, stalker_scc4, stalker_scc1, stalker_scc5)
 @song(2, wicked_drums, 0, 0, wicked_bass, wicked_lead2, wicked_lead3, wicked_lead, wicked_lead_echo)
 @song(3, out_of_time_drums, 0, 0, out_of_time_bass, out_of_time_bg, out_of_time_bg2, out_of_time_lead, out_of_time_lead2)
@@ -36,9 +36,9 @@
 
 vampire_killer_drums:
     @cmd(fe04)t7
-    a2c1c1d#2r1c1a2c1c1d#1c1d1d1
-    a2c1c1d#2r1c1a1d#1c1d#1d#1d1d1d1
-    a2c1c1d#2r1c1a2c1c1d#1c1c1c1
+    a2c1c1d#3c1a2c1c1d#1c1d1d1
+    a2c1c1d#3c1a1d#1c1d#1d#1d1d1d1
+    a2c1c1d#3c1a2c1c1d#1c1c1c1
     a2c1d#1d#2c1c1a1d#1d#1d#1d#1d#1d#1d#1
 
     a2c1c1d#3c1a2c1c1d#1d1d1d1
@@ -54,58 +54,151 @@ vampire_killer_drums:
     a1c1c1a1c1c1a2a2c1c1c#1c1c1c1a1c1a1c1c#1c1c1c1d#4d#1d#3
     @goto(vampire_killer_drums)
 
+
+ins_vkil0:
+    @cmd(ea07)@cmd(db03)@cmd(eb3933)i11@cmd(f153)@cmd(f214)
+    ;@cmd(fe01)i11@cmd(db02)@cmd(f153)@cmd(f219)@cmd(ea08)@cmd(eb3130)o2
+    @rtn()
+
+ins_vkil1:
+    @cmd(ea09)@cmd(db03)@cmd(eb3933)i11@cmd(f153)@cmd(f214)
+    ;@cmd(fe01)i23@cmd(f210)@cmd(f163)@cmd(db03)@cmd(eb2870)@cmd(ea0a)o1
+    @rtn()
+
+ins_vkil2:
+    @cmd(fe01)i88@cmd(ef)@cmd(f0)@cmd(ea0a)@cmd(eb0160)@cmd(db01)@cmd(f153)@cmd(f214)
+    @rtn()
+
+ins_vkil3:
+    @cmd(fe01)i2@cmd(db02)@cmd(eb0180)@cmd(ea07)@cmd(f100)
+    @rtn()
+
+ins_vkil4:
+    @cmd(fe01)@cmd(f0)i10@cmd(ea07)@cmd(db02)@cmd(eb7181)
+    @rtn()
+
+ins_vkil_bass:
+    @cmd(fe01)t7i35@cmd(ea0c)@cmd(eb0953)@cmd(db03)
+    @rtn()
+
+ins_vkil_chord:
+    @cmd(ea09)@cmd(db02)@cmd(eb0953)i11@cmd(f153)@cmd(f214)
+    @rtn()
+
+
 vampire_killer_scc2:
-    @cmd(fe01)i35@cmd(ea0c)@cmd(eb0953)@cmd(db03)t7
-    o4d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#4c1c1o3c1o4c1c1c1c1c1d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#4c1c1o3c1o4c1c1c1c1c1d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#1o5a#2a#1r1a#1o4a#2a#2a#2d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#1o5a#2a#1r1a#1o4a#2a#2a#2c#2c#1o3a#3o2c#2o4d2d1o3a3f2o4e2e1o3a#3o2c#2o4d2d1o3a1r4o4c#2c#1o3a#3o2c#2o4d2d1o3a3f2o4e2e1o3a#3o2c#2o4a2a1o2e3g2o4
-    d2d1d1r1d1c2d2r6o5a#2a#2o4a#1o3d3o4c2c2o3c1e3o4d2d1d1r1d1c2d2r6o5a#2a#2o4a#1o3d3o4c1r3o5a1o4c3d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#4c1c1o3c1o4c1c1c1c1c1d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#4c1c1o3c1o4c1c1c1c1c1d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#1o5a#2a#1r1a#1o4a#2a#2a#2d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#1o5a#2a#1r1a#1o4a#2a#2a#2c#2c#1o3a#3o2c#2o4d2d1o3a3f2o4e2e1o3a#3o2c#2o4d2d1o3a1r4o4c#2c#1o3a#3o2c#2o4d2d1o3a3f2o4e2e1o3a#3o2c#2o4a2a1o2e3g2o4d2d1d1r1d1c2d2r6o5a#2a#2o4a#1o3d3o4c2c2o3c1e3o4d2d1d1r1d1c2d2r6o5a#2a#2o4a#1o3d3o4c1r3o5a1o4c3
+    @call(ins_vkil_bass)
+    o4d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#4c1c1o3c1o4c1c1c1c1c1
+    o4d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#4c1c1o3c1o4c1c1c1c1c1
+    o4d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#1o5a#2a#1r1a#1o4a#2a#2a#2
+    o4d2d1d1d3d1d2d1d1d1d1d1d1o5a#2a#1a#1o4a#1o5a#2a#1r1a#1o4a#2a#2a#2
+    
+    @call(ins_vkil_bass)o4c#2c#1
+    @call(ins_vkil1)o2a#3o1c#2
+    @call(ins_vkil_bass)o4d2d1
+    @call(ins_vkil1)o2a3f2
+    @call(ins_vkil_bass)o4e2e1
+    @call(ins_vkil1)o2a#3o1c#2
+    @call(ins_vkil_bass)o4d2d1
+    @call(ins_vkil1)o2a1r4
+    @call(ins_vkil_bass)o4c#2c#1
+    @call(ins_vkil1)o2a#3o1c#2
+    @call(ins_vkil_bass) o4d2d1
+    @call(ins_vkil1)o2a3f2
+    @call(ins_vkil_bass)o4e2e1
+    @call(ins_vkil1)o2a#3o1c#2
+    @call(ins_vkil_bass)o4a2a1
+    @call(ins_vkil1)o1e3g2
+
+    @call(ins_vkil_bass)o4d2d1d1r1d1c2d2r6o5a#2a#2
+    @call(ins_vkil1)o3a#1o2d3
+    @call(ins_vkil_bass)o4c2c2
+    @call(ins_vkil1)o2c1e3
+    @call(ins_vkil_bass)o4d2d1d1r1d1c2d2r6o5a#2a#2
+    @call(ins_vkil1)o3a#1o2d3
+    @call(ins_vkil_bass)o4c1r3o5a1o4c3
     @goto(vampire_killer_scc2)
 
 vampire_killer_scc1:
     @cmd(fe01)i8@cmd(ea09)@cmd(eb0703)@cmd(db03)t7
     o2
-    @cmd(ea09)@cmd(eb0953)i10 o1d1d2c2o2@cmd(ea09)@cmd(eb0853)b3@cmd(ea04)b3
-    @cmd(ea09)@cmd(eb0953)i8 o2d2e1f1g1a3d3a2g1o1c7
-    @cmd(ea09)@cmd(eb0953)i10 o1d1d2c2o2@cmd(ea09)@cmd(eb0853)b3@cmd(ea04)b3
-    @cmd(ea0d)@cmd(eb0953)i8 o2d2e1f1g1a3d3a2g1c7
-    i10o2 r2d3a3g#1a1g#1f5r2f1d1@cmd(ea08)f1d1@cmd(ea0d)f1d1@cmd(ea08)f1f1@cmd(ea0d)d1f1@cmd(ea08)d1f1@cmd(ea0d)d1f1
-          r2d3a3g#1a1g#1f5r2f1d1@cmd(ea08)f1d1@cmd(ea0d)f1d1@cmd(ea08)f1f1@cmd(ea0d)d1f1@cmd(ea08)d1f1@cmd(ea0d)d1f1
-    c#3e3a#2a3f3d2c#3e3a#2a3d1r4c#3e3a#2a3f3d2e3g3a#2a3b3o1c#2d1d1o2d1d6r7o4a#1r1a#1r1o3d1f3c1r1c1r1e1g3o1d1d1o2d1d6r7o4a#1r1a#1r1o3d1f3c1r3o4a1o3c3
+    @call(ins_vkil0) o1d1d2c2o2@cmd(ea09)@cmd(eb0853)b5@cmd(ea02)@cmd(db02)b1
+    @call(ins_vkil2) o2d2e1f1g1a3d3a2g1o1c4r3
+    @call(ins_vkil0) o1d1d2c2o2@cmd(ea09)@cmd(eb0853)b5@cmd(ea02)@cmd(db02)b1
+    @call(ins_vkil2) o2d2e1f1g1a3d3a2g1c4r3
+
+    @call(ins_vkil3)o1 r2d3a3g#1a1g#1f5
+    @call(ins_vkil4)r2f1d1@cmd(ea04)f1d1@cmd(ea0a)f1d1@cmd(ea04)f1f1@cmd(ea0a)d1f1@cmd(ea04)d1f1@cmd(ea0a)d1f1@cmd(ea02)@cmd(db01)d1f1
+    @call(ins_vkil3)o1 d3a3g#1a1g#1f5
+    @call(ins_vkil4)r2f1d1@cmd(ea04)f1d1@cmd(ea0a)f1d1@cmd(ea04)f1f1@cmd(ea0a)d1f1@cmd(ea04)d1f1@cmd(ea0a)d1f1
+
+    @call(ins_vkil1)
+    o1c#3e3a#2a3f3d2c#3e3a#2a3d1r4
+    o1c#3e3a#2a3f3d2e3g3a#2a3b3o0c#2
+    @call(ins_vkil1)o0d1d1o1d1d6r7
+    @call(ins_vkil_chord)o3a#1r1a#1r1o2d1f3c1r1c1r1e1g3
+    @call(ins_vkil1)o0d1d1o1d1d6r7
+    @call(ins_vkil_chord)o3a#1r1a#1r1o2d1f3c1r3o3a1o2c3
     @goto(vampire_killer_scc1)
 
 vampire_killer_scc3:
     @cmd(fe01)i10 @cmd(ea0c)@cmd(eb0953)@cmd(db03)t7
-    @cmd(ea09)@cmd(eb0953)i10 o3a1a1r1g1r1@cmd(ea09)@cmd(eb0853)g3@cmd(ea04)g3r5
-    @cmd(ea09)@cmd(eb0953)i8 d3o3a#1r2o2d2c1g3r4
-    @cmd(ea09)@cmd(eb0953)i10 o3a1a1r1g1r1@cmd(ea09)@cmd(eb0853)g3@cmd(ea04)g3r5
-    @cmd(ea09)@cmd(eb0953)i8 d3o3a#1r2o2d2c1g3r6
-    i10 a2r1o2d3c#1d1c#1c5
-    i29a1r1a1g#1r1g#1g1r1a1r1a1g#1r1g#1g1r3
-    i10o3a2r1o2d3c#1d1c#1c5
-    i29a1r1a1g#1r1g#1g1r1a1r1a1g#1r1
-    g#1g1r1o3a#3o2c#1r4d3o3a1r4a#3o2c#1r4d3o3a1r4a#3o2c#1r4d3o3a1r4a#3o2c#1r4c#3e1r4o1d2d1d1r1d1c2d2r6f1r1f4r2e1r1e4r2d2d1d1r1d1c2d2r6f1r1f4r2e1r3o4a1o3c3
+    @call(ins_vkil0) o2a1a1r1g1r1@cmd(ea09)@cmd(eb0853)g5@cmd(ea01)@cmd(db01)g1r5
+    d3o3a#1r2o2d2c1g5r2
+    @call(ins_vkil0) o2a1a1r1g1r1@cmd(ea09)@cmd(eb0853)g5@cmd(ea01)@cmd(db01)g1r5
+    d3o3a#1r2o2d2c1o4c4r3
+vampire_killer_scc3_0:
+    @call(ins_vkil3) r2o2a2r1o1d3c#1d1c#1c5
+    @call(ins_vkil4) o2a1r1a1g#1r1g#1g1r1a1r1a1g#1r1g#1g1r1
+    @loop(2, vampire_killer_scc3_0)
+    @call(ins_vkil1)
+    o2a#3o1c#1r4d3o2a1r4a#3o1c#1r4d3o2a1r4
+    o2a#3o1c#1r4d3o2a1r4a#3o1c#1r4c#3e1r4
+    @call(ins_vkil_chord)o1d2d1d1r1d1c2d2r6f1r1f4r2e1r1e4r2
+                      d2d1d1r1d1c2d2r6f1r1f4r2e1r3o4a1o3c3
     @goto(vampire_killer_scc3)
 
 vampire_killer_scc4:
     @cmd(fe01)i10 @cmd(ea0c)@cmd(eb0953)@cmd(db03)t7
-    @cmd(ea09)@cmd(eb0953)i10 o3d1d1r1d1r1@cmd(ea09)@cmd(eb0853)d3@cmd(ea04)d3
-    @cmd(ea06)@cmd(eb0953)i8 o2r2d2e1f1g1a3d3a2r2e1g1o1c1o2g1
-    @cmd(ea09)@cmd(eb0953)i10 d1d1r1d1r1@cmd(ea09)@cmd(eb0853)d3@cmd(ea04)d3
-    @cmd(ea06)@cmd(eb0953)i8 o2r2d2e1f1g1a3d3a2r1c1c1c1c1c1
-    i10 r2f2r1o2f3e1f1e1c5r1
-    i29a1r1a1g#1r1g#1g1r1a1r1a1g#1r1g#1g1r2
-    i10o3f2r1o2f3e1f1e1c5r1
-    i29a1r1a1g#1r1g#1g1r1a1r1a1g#1r1g#1g1
-    i10o3a#3o2c#3e2d3o3a3a2a#3o2c#3e2d3o3a1r4a#3o2c#3e2d3o3a3a2a#3o2c#3g2c#3e3a2a2a1a1r1a1g2a2r6o1d1r1d4r2c1r1c4r2o2a2a1a1r1a1g2a2r6o1d1r1d4r2c1r3o3a1o2c3
+    @call(ins_vkil0) o2d1d1r1d1r1@cmd(ea09)@cmd(eb0853)d5@cmd(ea01)@cmd(db01)d1
+    @call(ins_vkil2)@cmd(ea07)@cmd(db02) o2r2d2e1f1g1a3d3a2r2r4
+    @call(ins_vkil0) o2d1d1r1d1r1@cmd(ea09)@cmd(eb0853)d5@cmd(ea01)@cmd(db01)d1
+    @call(ins_vkil2)@cmd(ea07)@cmd(db02) o2r2d2e1f1g1a3d3a2r1c1c1c1c1c1
+
+vampire_killer_scc4_0:
+    @call(ins_vkil3) r2o3f2r1o2f3e1f1e1c5
+    @call(ins_vkil4)@cmd(ea05)@cmd(db01) o2r1a1r1a1g#1r1g#1g1r1a1r1a1g#1r1g#1g1
+    @loop(2, vampire_killer_scc4_0)
+    @call(ins_vkil1)o3a#3o2c#3e2d3o3a3a2a#3o2c#3e2d3o3a1r4
+                      a#3o2c#3e2d3o3a3a2a#3o2c#3g2c#3e3a2
+    @call(ins_vkil_chord)
+    o2a2a1a1r1a1g2a2r6
+    o3d1r1d4r2c1r1c4r2
+    o2a2a1a1r1a1g2a2r6
+    o3d1r1d4r2c1r3
+    o3a1o2c3
     @goto(vampire_killer_scc4)
 
 vampire_killer_scc5:
-    @cmd(fe01)i10 @cmd(ea09)@cmd(eb0953)@cmd(db03)t7
-    @cmd(ea09)@cmd(eb0953)i10 o2f1f1r1f1r1@cmd(ea09)@cmd(eb0853)f3@cmd(ea04)f3r5
-    @cmd(ea0a)@cmd(eb0953)i50 o4a#1o3d1f1d1a#1d1o4a#1o3d1c1e1g1e1o2c1o3g1e1g1
-    @cmd(ea09)@cmd(eb0953)i10 o2f1f1r1f1r1@cmd(ea09)@cmd(eb0853)f3@cmd(ea04)f3r5
-    @cmd(ea0a)@cmd(eb0953)i50 o4a#1o3d1f1d1a#1d1o4a#1o3d1c1e1g1c1o4c1c1c1c1r4
-    @cmd(ea09)i10 o2d3a3r6r15r5d3a3r6r16o3e3a#3o2c#2o3a3f3f2e3a#3o2c#2o3a3d1r4e3a#3o2c#2o3a3f3f2e3a#3o2c#2o3a3b3o2c#2f2f1f1r1f1c2f2r6a#1r1a#4r2g1r1g4r2f2f1f1r1f1c2f2r6a#1r1a#4r2g1r3a1c3
+    @cmd(fe01) @cmd(ea09)@cmd(eb0953)@cmd(db03)t7
+    @call(ins_vkil0) o2f1f1r1f1r1@cmd(ea09)@cmd(eb0853)f5@cmd(ea01)@cmd(db01)f1r5
+    @cmd(ea0a)@cmd(eb0953)i1 o4a#1o3d1f1d1a#1d1o4a#1o3d1c1e1g1e1o2c1o3g1e1g1
+    @call(ins_vkil0) o2f1f1r1f1r1@cmd(ea09)@cmd(eb0853)f5@cmd(ea01)@cmd(db01)f1r5
+    @cmd(ea0a)@cmd(eb0953)i1 o4a#1o3d1f1d1a#1d1o4a#1o3d1c1e1g1c1o4c1c1c1c1
+
+    @call(ins_vkil3)r2o2d3a3r8
+    @call(ins_vkil1)o2r2f1d1@cmd(ea02)f1d1@cmd(ea08)f1d1@cmd(ea02)f1f1@cmd(ea08)d1f1@cmd(ea02)d1f1@cmd(ea08)d1f1
+    @call(ins_vkil3)r2o2d3a3r8
+    @call(ins_vkil1)o2r2f1d1@cmd(ea02)f1d1@cmd(ea08)f1d1@cmd(ea02)f1f1@cmd(ea08)d1f1@cmd(ea02)d1f1@cmd(ea08)d1f1
+    @call(ins_vkil_chord)
+    o3e3a#3o2c#2o3a3f3f2e3a#3o2c#2o3a3d1r4
+    o3e3a#3o2c#2o3a3f3f2e3a#3o2c#2o3a3b3o2c#2
+    o2f2f1f1r1f1e2f2r6
+    a#1r1a#4r2g1r1g4r2
+    o2f2f1f1r1f1e2f2r6
+    a#1r1a#4r2g1r3a1c3
     @goto(vampire_killer_scc5)
+
 
 
 stalker_psg_drum_pattern:

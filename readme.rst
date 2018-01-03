@@ -22,7 +22,10 @@ Save this rom as nemesis3.rom:
 Download the Vampire Killer TurboFix patch and apply it to vkiller.rom:
   http://frs.badcoffee.info/patches.html
 
-Install Python 2.7 if you don't have it already:
+Download SJASMPlus:
+  https://sourceforge.net/projects/sjasmplus
+
+Install Python if you don't have it already:
   http://python.org
 
 And then run:
@@ -35,12 +38,13 @@ of Vampire Killer with SCC music.
 
 TurboFix Support
 ----------------
-This patch is applied on top of the Vampire Killer 'TurboFix' patch, which
+This patch is applied on top of the Vampire Killer 'TurboFix' patch by FRS, which
 means it has improved controls (N key for jumping), has support for the R800,
 and fixes the flickering sprites problem.
 Unfortunately the TurboFix patch removes Game Master support, however you
 can use Game Master 2 to select the stage and lives. To do this, put the
-Game Master in slot 1 and the game in slot 2
+Game Master in slot 1 and the game in slot 2.
+For more information about the TurboFix patch, see turbofix_readme.txt.
 
 
 Cheats
