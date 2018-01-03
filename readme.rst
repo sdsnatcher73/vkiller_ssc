@@ -17,7 +17,7 @@ Save this rom as vkiller.rom:
 
 Save this rom as nemesis3.rom:
   Gofer no Yabou Episode II. Nemesis 3 - The Eve of Destruction (1988)(Konami)[a][RC-764] 
-  http://www.planetemu.net/roms/msx-msx2-various-rom
+  http://www.planetemu.net/roms/msx-various-rom?page=G
 
 Download the Vampire Killer TurboFix patch and apply it to vkiller.rom:
   http://frs.badcoffee.info/patches.html

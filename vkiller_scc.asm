@@ -68,7 +68,7 @@ end_cheats:
 
 music_start_shim:
         ld      a, e
-        cp      a, 08dh
+        cp      08dh
         jr      nz, not_ending
         ld      a, 1
         call    04107h  ; prevent gfx corruption in ending titles
@@ -101,15 +101,15 @@ initialize:
         org     07ee8h
 
 write_psg:
-        cp      a, 4
+        cp      4
         ret     z
-        cp      a, 5
-        ret     z
-
-        cp      a, 10
+        cp      5
         ret     z
 
-        cp      a, 7
+        cp      10
+        ret     z
+
+        cp      7
         jr      nz, not_register_seven
 
         ; if the game is paused, don't write PSG ch7

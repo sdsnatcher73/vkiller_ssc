@@ -1,6 +1,6 @@
 TODO:
-- Ability to generate a .kss file with the music
-- am I allowed to roll the turbofix patch into mine and release as an IPS?
+- Is it possible to get 'F5 continue' / stage select?
+- Reduce SCC volume slightly
 
 
 

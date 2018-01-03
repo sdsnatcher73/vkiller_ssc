@@ -477,16 +477,23 @@ wicked_lead3_1:
     r16r16
     @goto(wicked_lead3_1)
 
+boss_melody_1:
+    o3c1g1d#1g1c1g1d#1g1d1g1f1g1d1g1f1g1c1g1d#1g1c1g1d#1g1c1g1d#1g1c1g1d#1g1c1g#1f1g#1c1g#1f1g#1c1g1d#1g1c1g1d#1g1d1g1f1g1d1g1f1g1c1g1f1g1c1g1f1g1
+    @rtn()
+
+boss_melody_2:
+    o1c1o2g1d#1g1o1c1o2g1d#1o1c1d1o2b1g1b1o1d1o2b1g1b1d#1g1o1c1d#1o2g1o1c1d#1g1o2d#1g1o1c1d#1o2g1o1c1d#1g1o2c1f1g#1o1c1o2g#1o1c1f1g#1g1d#1c1o2g1d#1c1d#1g1o4b1o2d1g1b1g1b1o1d1g1g1d#1c1o2g1d#1c1d#1g1
+    @rtn()
 
 boss_scc1:
     @cmd(fe01)i29@cmd(ea0c)@cmd(eb0a70)@cmd(db07)t7
 boss_scc1_0:
-    o3c1g1d#1g1c1g1d#1g1d1g1f1g1d1g1f1g1c1g1d#1g1c1g1d#1g1c1g1d#1g1c1g1d#1g1c1g#1f1g#1c1g#1f1g#1c1g1d#1g1c1g1d#1g1d1g1f1g1d1g1f1g1c1g1f1g1c1g1f1g1
+    @call(boss_melody_1)    
     @goto(boss_scc1_0)
 
 
 boss_scc1d:
-    @cmd(fe01)i29@cmd(ea05)@cmd(eb0a70)@cmd(db07)t2r6t7
+    @cmd(fe01)i29@cmd(ea04)@cmd(eb0a70)@cmd(db04)t3r2t7
     @goto(boss_scc1_0)
 
 
@@ -496,14 +503,21 @@ boss_scc2_0:
     r8r8r8r8r8r8r8r8
     r8r8r8r8r8r8r8r8
 boss_scc2_1:
-    o1c1o2g1d#1g1o1c1o2g1d#1o1c1d1o2b1g1b1o1d1o2b1g1b1d#1g1o1c1d#1o2g1o1c1d#1g1o2d#1g1o1c1d#1o2g1o1c1d#1g1o2c1f1g#1o1c1o2g#1o1c1f1g#1g1d#1c1o2g1d#1c1d#1g1o4b1o2d1g1b1g1b1o1d1g1g1d#1c1o2g1d#1c1o4g1d#1
-    @loop(2, boss_scc2_1)
+    @call(boss_melody_2)
+    @call(boss_melody_2)
     @goto(boss_scc2_0)
 
 
 boss_scc2d:
-    @cmd(fe01)i29@cmd(ea01)@cmd(eb0a70)@cmd(db05)t2r6t7
-    @goto(boss_scc2_0)
+    @cmd(fe01)i29t3r4t7
+boss_scc2d_0:
+    @cmd(ea03)@cmd(eb0a70)@cmd(db03)
+    @call(boss_melody_1)
+    @call(boss_melody_1)
+    @cmd(ea04)@cmd(eb0a70)@cmd(db04)
+    @call(boss_melody_2)
+    @call(boss_melody_2)
+    @goto(boss_scc2d_0)
 
 
 boss_scc3:
