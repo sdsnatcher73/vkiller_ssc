@@ -21,6 +21,14 @@
         nop
 
 
+; disable R800 mode
+; R800 mode causes the PSG drums to sound inconsistent/weird
+        output vkiller_patch01db2.bin
+        nop
+        nop
+        nop
+
+
         output vkiller_patch01c8a.bin
         org     05c8ah
 

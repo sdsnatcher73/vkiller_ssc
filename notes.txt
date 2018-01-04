@@ -1,7 +1,12 @@
 TODO:
 - Switch to another ROM that has 'stage select'?
-- Reverse engineer and reapply turbofix, sprite flickering fix, jump button fix, R800 enable
+  - Reverse engineer and reapply turbofix, sprite flickering fix, jump button fix, R800 enable
 - Re-work all music with proper speakers
+- drums sound distorted in R800 mode. a lot better in Z80 although not perfect
+  maybe the player is too fast somehow and it misses a transient?
+- SCC doesn't sound loud enough and/or SFX sound too loud (on my TurboR)
+- wicked child: main lead part needs a sharper sound
+- game over music should have sharper instrument
 - Fix music corruption after 'F5 Continue'
   Caused by another song being started while the first is still playing?
   This is also what happens on the original cartridge and it doesn't
