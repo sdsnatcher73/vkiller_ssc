@@ -303,7 +303,9 @@ stalker_scc2_2:
     o3e1o2c1o3e1o2c1o3a1o2c1o3a1o2c1o3e1o2c1o3e1o2c1o3a1o2c1o3a1o2c1o2d1o3a#1f1o2d1o3a#1f1o2d1o3a#1o2d1o3a#1f1o2d1o3a#1f1o2d1o3a#1
     @loop(2, stalker_scc2_2)
 
-    r16r16
+    i1@cmd(ea08)@cmd(db03)@cmd(f230)@cmd(f146)
+    r2o2f1f1r1f3e2r6
+    r2o2f1f1r1f3e2r6
 
     @goto(stalker_scc2_3)
 
@@ -326,8 +328,9 @@ stalker_scc3_1:
     o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a#1a#1a#1a1a1a1g#1g#1a#1a#1a#1a1a1a1g#1g#1
     o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a1o4a1o5a#1a#1a#1a1a1a1g#1g#1a#1a#1a#1a1a1a1g#1g#1
 
-    g#1g#1o4g#1o5g#1r1g#3r2r6
-    g#1g#1o4g#1o5g#1r1g#3r2r6
+    o5
+    g#1g#1o4g#1o5g#1r1g#3a2r6
+    g#1g#1o4g#1o5g#1r1g#3a2r6
     @goto(stalker_scc3_1)
 
 
@@ -354,8 +357,8 @@ stalker_scc4_2:
     @loop(2, stalker_scc4_2)
 
     i1@cmd(ea08)@cmd(db03)@cmd(f230)@cmd(f146)    
-    o2r1g#1g#1r1g#3r2r6
-      r2g#1g#1r1g#3r2r6
+    o2r1g#1g#1r1g#3a2r6
+      r2g#1g#1r1g#3a2r6
     @goto(stalker_scc4_3)
 
 
@@ -371,12 +374,13 @@ stalker_scc5_1:
     o3a3o2d7c#2c2o3b2o2d1e1d1o3a#13
     @loop(2, stalker_scc5_1)
 
-    r2i1@cmd(ea08)@cmd(db03)@cmd(f230)@cmd(f146)
+    r2
+    i1@cmd(ea08)@cmd(db03)@cmd(f230)@cmd(f146)
     o1c2c1o2b2b1a#2a2a1g#2g#1g2f3d12r1
     o1c2c1o2b2b1a#2a2a1g#2g#1g2f3d12r1
 
-    o2b1b1r1b3o2c#2r6
-    o2r2b1b1r1b3o2c#2r6
+    o2b1b1r1b3o1c#2r6
+    o2r2b1b1r1b3o1c#2r6
 
     @goto(stalker_scc5_2)
 
