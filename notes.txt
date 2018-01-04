@@ -1,7 +1,7 @@
 TODO:
-- Is it possible to get 'F5 continue' / stage select?
-- Reduce SCC volume slightly
-
+- Switch to another ROM that has 'stage select'?
+- Reverse engineer and reapply turbofix, sprite flickering fix, jump button fix, R800 enable
+- Re-work all music with proper speakers
 
 
 turbofix patch (19 dec 2017)
@@ -23,6 +23,15 @@ interrupted by the music player that runs on the interrupt. this can then cause
 the first few notes of the new song to have the wrong frequency
 <- not relevant anymore because we disable interrupts throughout
    the 'start music' function???
+
+
+Game Master detection
+---------------------
+GAME MASTER DETECTION:
+5c92 - 5ce8. loop over all subslots, check address 7FFA - 7FFF (last 6 bytes)
+should have data: 00 30 31 13 35 aa
+
+0e600h <- game master detected (0xff = yes, 0x00 = no)
 
 
 MEMORY (RAM) USAGE

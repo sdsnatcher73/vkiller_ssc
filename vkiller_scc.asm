@@ -67,6 +67,8 @@ end_cheats:
         ret
 
 music_start_shim:
+        ld      a, 0ffh
+        ld      (0e600h), a  ; game master detected = TRUE (enables F5 continue)
         ld      a, e
         cp      08dh
         jr      nz, not_ending
