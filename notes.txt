@@ -27,11 +27,12 @@ the first few notes of the new song to have the wrong frequency
 
 Game Master detection
 ---------------------
-GAME MASTER DETECTION:
-5c92 - 5ce8. loop over all subslots, check address 7FFA - 7FFF (last 6 bytes)
-should have data: 00 30 31 13 35 aa
+The code for this is at 5c92 - 5ce8.
+It loops over all subslots, and checks address 7FFA - 7FFF (last 6 bytes).
+It should have data: 00 30 31 13 35 aa
 
-0e600h <- game master detected (0xff = yes, 0x00 = no)
+If it does then it sets 0e600h to 0xff which indicates that the Game Master was detected.
+If it was not detected, it sets 0e600h to 0x00
 
 
 MEMORY (RAM) USAGE
