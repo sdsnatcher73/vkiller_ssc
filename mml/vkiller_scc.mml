@@ -56,35 +56,31 @@ vampire_killer_drums:
 
 
 ins_vkil0:
-    @cmd(ea07)@cmd(db03)@cmd(eb3933)i11@cmd(f153)@cmd(f214)
-    ;@cmd(fe01)i11@cmd(db02)@cmd(f153)@cmd(f219)@cmd(ea08)@cmd(eb3130)o2
+    @cmd(ea07)@cmd(db02)@cmd(eb3933)i11@cmd(f153)@cmd(f214)
     @rtn()
 
 ins_vkil1:
-    @cmd(ea08)@cmd(db03)@cmd(eb3933)i11@cmd(f153)@cmd(f214)
-    ;@cmd(fe01)i23@cmd(f210)@cmd(f163)@cmd(db03)@cmd(eb2870)@cmd(ea0a)o1
+    @cmd(ea08)@cmd(db02)@cmd(eb3933)i88@cmd(f153)@cmd(f214)
     @rtn()
 
 ins_vkil2:
-    i10@cmd(ef)@cmd(f0)@cmd(ea09)@cmd(eb0160)@cmd(db01)@cmd(f153)@cmd(f214)
+    i29@cmd(ef)@cmd(f0)@cmd(ea09)@cmd(eb0160)@cmd(db01)@cmd(f153)@cmd(f214)
     @rtn()
 
 ins_vkil3:
     i11@cmd(ef)@cmd(f0)@cmd(ea07)@cmd(eb0160)@cmd(db02)@cmd(f153)@cmd(f214)
-    ;i2@cmd(db02)@cmd(eb0180)@cmd(ea07)@cmd(f100)
     @rtn()
 
 ins_vkil4:
-    @cmd(f0)i10@cmd(ea07)@cmd(db02)@cmd(eb7181)
+    @cmd(f0)i23@cmd(ea07)@cmd(db02)@cmd(eb7181)
     @rtn()
 
 ins_vkil_bass:
-    t7i35@cmd(ea0d)@cmd(eb0953)@cmd(db03)
+    t7i35@cmd(ea0d)@cmd(eb0953)@cmd(db04)
     @rtn()
 
 ins_vkil_chord:
-    ;@cmd(ea09)@cmd(db02)@cmd(eb0953)i11@cmd(f153)@cmd(f214)
-    @cmd(ea07)@cmd(db03)@cmd(eb3933)i11@cmd(f153)@cmd(f214)
+    @cmd(fe01)@cmd(f0)i11@cmd(ea08)@cmd(db02)@cmd(eb7181)
     @rtn()
 
 
@@ -124,9 +120,9 @@ vampire_killer_scc2:
 vampire_killer_scc1:
     @cmd(fe01)t7
     o2
-    @call(ins_vkil0) o1d1d2c2o2@cmd(eb0853)b5@cmd(ea02)@cmd(db02)b1
+    @call(ins_vkil0) o1d1d1r1c1r1o2@cmd(eb0853)b5@cmd(ea02)@cmd(db02)b1
     @call(ins_vkil2) o2d2e1f1g1a3d3a2g1o1c4r3
-    @call(ins_vkil0) o1d1d2c2o2@cmd(eb0853)b5@cmd(ea02)@cmd(db02)b1
+    @call(ins_vkil0) o1d1d1r1c1r1o2@cmd(eb0853)b5@cmd(ea02)@cmd(db02)b1
     @call(ins_vkil2) o2d2e1f1g1a3d3a2g1c4r3
 
     @call(ins_vkil3)o1 r2d3a3g#1a1g#1f5
@@ -138,26 +134,29 @@ vampire_killer_scc1:
     o1c#3e3a#2a3f3d2c#3e3a#2a3d1r4
     o1c#3e3a#2a3f3d2e3g3a#2a3b3o0c#2
     @call(ins_vkil1)o0d1d1o1d1d6r7
-    @call(ins_vkil_chord)o3a#1r1a#1r1o2d1f3c1r1c1r1e1g3
+    @call(ins_vkil0)o3a#1r1a#1r1o2d1f3c1r1c1r1e1g3
     @call(ins_vkil1)o0d1d1o1d1d6r7
-    @call(ins_vkil_chord)o3a#1r1a#1r1o2d1f3c1r3o3a1o2c3
+    @call(ins_vkil0)o3a#1r1a#1r1o2d1f3c1r3o3a1o2c3
     @goto(vampire_killer_scc1)
 
 vampire_killer_scc3:
     @cmd(fe01)t7
     @call(ins_vkil0) o2a1a1r1g1r1@cmd(eb0853)g5@cmd(ea01)@cmd(db01)g1r5
-    d3o3a#1r2o2d2c1g5r2
+    @call(ins_vkil2) o2d3o3a#3o2d2c1g5r2
     @call(ins_vkil0) o2a1a1r1g1r1@cmd(eb0853)g5@cmd(ea01)@cmd(db01)g1r5
-    d3o3a#1r2o2d2c1o4c4r3
+    @call(ins_vkil2) o2d3o3a#3o2d2c1c4r3
 vampire_killer_scc3_0:
     @call(ins_vkil3) r2o2a2r1o1d3c#1d1c#1c5
-    @call(ins_vkil4) o2a1r1a1g#1r1g#1g1r1a1r1a1g#1r1g#1g1r1
+    @call(ins_vkil4) o1a1r1a1g#1r1g#1g1r1a1r1a1g#1r1g#1g1r1
     @loop(2, vampire_killer_scc3_0)
     @call(ins_vkil1)
     o2a#3o1c#1r4d3o2a1r4a#3o1c#1r4d3o2a1r4
     o2a#3o1c#1r4d3o2a1r4a#3o1c#1r4c#3e1r4
-    @call(ins_vkil_chord)o1d2d1d1r1d1c2d2r6f1r1f4r2e1r1e4r2
-                      d2d1d1r1d1c2d2r6f1r1f4r2e1r3o4a1o3c3
+    @call(ins_vkil_chord)
+    o1d2d1d1r1d1c2d2r6
+    o1f1r1f4r2e1r1e4r2
+    o1d2d1d1r1d1c2d2r6
+    o1f1r1f4r2e1r3o4a1o3c3
     @goto(vampire_killer_scc3)
 
 vampire_killer_scc4:
@@ -175,9 +174,9 @@ vampire_killer_scc4_0:
                       a#3o2c#3e2d3o3a3a2a#3o2c#3g2c#3e3a2
     @call(ins_vkil_chord)
     o2a2a1a1r1a1g2a2r6
-    o3d1r1d4r2c1r1c4r2
+    o2d1r1d4r2c1r1c4r2
     o2a2a1a1r1a1g2a2r6
-    o3d1r1d4r2c1r3
+    o2d1r1d4r2c1r3
     o3a1o2c3
     @goto(vampire_killer_scc4)
 
