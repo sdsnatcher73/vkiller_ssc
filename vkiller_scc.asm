@@ -152,14 +152,20 @@ map_slots:
         push    bc
         push    hl
         ld      a, b
-        or      03h
+        rlca    ; replicate slot in page 3 to page 0
+        rlca
+        and     03h
+        ld      l, a
+        ld      a, b
+        and     ~03h
+        or      l
         out     (c), a
 
         ; SOFAROM uses these addresses for SCC patching
         ; to take into account that we map RAM into page 0, we need
         ; to change these values. this is a SOFAROM specific hack
-        ld      (0f6ebh), a
-        ld      a, (0f6eah)
+        ld      (0f6ebh), a  ; primary slot select (game)
+        ld      a, (0f6eah)  ; primary slot select (SCC)
         or      03h
         ld      (0f6eah), a
 
