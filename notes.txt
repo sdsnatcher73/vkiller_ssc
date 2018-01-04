@@ -2,7 +2,10 @@ TODO:
 - Switch to another ROM that has 'stage select'?
 - Reverse engineer and reapply turbofix, sprite flickering fix, jump button fix, R800 enable
 - Re-work all music with proper speakers
-
+- Fix music corruption after 'F5 Continue'
+  Caused by another song being started while the first is still playing?
+  This is also what happens on the original cartridge and it doesn't
+  cause music corruption there
 
 
 turbofix patch (19 dec 2017)
