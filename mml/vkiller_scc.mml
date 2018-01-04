@@ -36,9 +36,9 @@
 
 vampire_killer_drums:
     @cmd(fe04)t7
-    a2c1c1d#3c1a2c1c1d#1c1d1d1
-    a2c1c1d#3c1a1d#1c1d#1d#1d1d1d1
-    a2c1c1d#3c1a2c1c1d#1c1c1c1
+    a2c1c1d#2r1c1a2c1c1d#1c1d1d1
+    a2c1c1d#2r1c1a1d#1c1d#1d#1d1d1d1
+    a2c1c1d#2r1c1a2c1c1d#1c1c1c1
     a2c1d#1d#2c1c1a1d#1d#1d#1d#1d#1d#1d#1
 
     a2c1c1d#3c1a2c1c1d#1d1d1d1
