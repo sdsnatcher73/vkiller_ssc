@@ -220,18 +220,6 @@ music_start:
         ld      a,e
         and     07fh
         add     a, 6
-
-        ; clear music player state
-        push    bc
-        push    de
-        ld      hl, 02000h
-        ld      de, 02001h
-        ld      bc, 00500h
-        ld      (hl), 0
-        ldir
-        pop     de
-        pop     bc
-
         jr      music_start_call
 
 music_stop:
