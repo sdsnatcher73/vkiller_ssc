@@ -6,15 +6,15 @@
 @song(3, out_of_time_drums, 0, 0, out_of_time_bass, out_of_time_bg, out_of_time_bg2, out_of_time_lead, out_of_time_lead2)
 @song(4, heart_of_fire_drums, 0, 0, heart_of_fire_bass, heart_of_fire_lead1, heart_of_fire_lead4, heart_of_fire_lead2, heart_of_fire_lead3)
 @song(5, edge_psg, edge_drums, 0, edge_bass, edge_bass2, edge_lead2, edge_lead, edge_lead_echo)
-@song(6, finalboss_psg, 0, 0, finalboss_1, finalboss_2, finalboss_3, finalboss_4, 0)
+@song(6, finalboss_psg, dummy, 0, finalboss_1, finalboss_2, finalboss_3, finalboss_4, 0)
 @song(7, boss_psg0, boss_psg1, 0, boss_scc1, boss_scc1d, boss_scc2, boss_scc2d, boss_scc3)
-@song(8, 0, 0, 0, nothing_to_lose1, nothing_to_lose2, nothing_to_lose3, nothing_to_lose4, 0)
+@song(8, dummy, dummy, 0, nothing_to_lose1, nothing_to_lose2, nothing_to_lose3, nothing_to_lose4, 0)
 @song(9, death_drums, 0, 0, death_4, death_2, death_3, death_1, death_5)
 @song(10, intro_psg1, 0, 0, intro_psg1, intro_psg2, intro_psg3, intro_psg4, intro_psg5)
 @song(11, gameover_drums, 0, 0, gameover_scc5, gameover_scc4, gameover_scc3, gameover_scc2, gameover_scc1)
 @song(12, clear_psg1, clear_psg2, 0, clear_scc1, clear_scc2, clear_scc3, clear_scc1d, clear_scc2d)
-@song(13, 0, 0, 0, all_clear1, all_clear2, all_clear3, all_clear4, all_clear1d)
-@song(14, ending_drums, 0, 0, ending1, ending2, ending3, ending4, 0)
+@song(13, dummy, dummy, 0, all_clear1, all_clear2, all_clear3, all_clear4, all_clear1d)
+@song(14, ending_drums, dummy, 0, ending1, ending2, ending3, ending4, 0)
 
 
 ; song 0 = Vampire Killer (stage 1)
@@ -32,6 +32,11 @@
 ; song 12 = Stage Clear
 ; song 13 = All Clear
 ; song 14 = Ending
+
+
+dummy:
+    t16r16r16r16r16r16r16r16r16
+    @goto(dummy)
 
 
 vampire_killer_drums:
