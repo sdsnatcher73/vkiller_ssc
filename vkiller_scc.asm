@@ -23,10 +23,10 @@
 
 ; disable R800 mode
 ; R800 mode causes the PSG drums to sound inconsistent/weird
-        output vkiller_patch01db2.bin
-        nop
-        nop
-        nop
+;        output vkiller_patch01db2.bin
+;        nop
+;        nop
+;        nop
 
 
         output vkiller_patch01c8a.bin
@@ -124,7 +124,7 @@ write_psg:
 
         ; if the game is paused, don't write PSG ch7
         ; this is to prevent interference with the game paused jingle
-        ld      a, (02280h)
+        ld      a, (0f080h)
         and     2
         ret     nz  ; paused
 
@@ -152,68 +152,17 @@ not_register_seven:
         ret
 
 map_slots:
-        ; map RAM into bank 0000-3fff
-        ; returns original value of #ffff in a
-        ; returns original slot select in b/c
-        ld      c, 0a8h
-        in      b, (c)
-        push    bc
-        push    hl
-        ld      a, b
-        rlca    ; replicate slot in page 3 to page 0
-        rlca
-        and     03h
-        ld      l, a
-        ld      a, b
-        and     ~03h
-        or      l
-        out     (c), a
-
-        ; SOFAROM uses these addresses for SCC patching
-        ; to take into account that we map RAM into page 0, we need
-        ; to change these values. this is a SOFAROM specific hack
-        ld      (0f6ebh), a  ; primary slot select (game)
-        ld      a, (0f6eah)  ; primary slot select (SCC)
-        or      03h
-        ld      (0f6eah), a
-
-        ; get subslot from page 3 (c000-ffff) and apply to page 0 (0000-3fff)
-        ld      hl, 0ffffh
-        ld      a, (hl)
-        cpl
-        push    af
-        ld      b, a
-        and     011000000b
-        rlca    
-        rlca
-        ld      c, a
-        ld      a, b
-        and     011111100b
-        or      c
-        ld      (hl), a
-
         ; map music data using konami SCC mapper
         ld      a, 17
         ld      (09000h), a
         ld      a, 18
         ld      (0b000h), a
-
-        ld      a, 1
-        out     (0fch), a
-
-        pop     af
-        pop     hl
-        pop     bc
         ret
 
 music_start:
         di
 
         call    map_slots
-
-        push    bc
-        push    hl
-        push    af
 
         ; interpret the command
         ld      a, e
@@ -234,9 +183,9 @@ music_stop:
         ; clear music player state
         push    bc
         push    de
-        ld      hl, 02000h
-        ld      de, 02001h
-        ld      bc, 00300h
+        ld      hl, 0ee00h
+        ld      de, 0ee01h
+        ld      bc, 00280h
         ld      (hl), 0
         ldir
         pop     de
@@ -256,18 +205,10 @@ music_start_command:
 music_start_call:
         push    bc
         call    06003h  ; nemesis 3 song start function
+        call    06180h  ; initialize some state which fixes boss music cutting out
         pop     bc
 
 music_start_skip:
-
-        pop     af
-        ld      (0ffffh), a
-        pop     hl
-        pop     bc
-
-        ; restore BIOS ROM       
-        out     (c), b
-
         di
         ld      a, 14
         ld      (09000h), a
@@ -288,21 +229,12 @@ music_update:
 
         call    map_slots
 
-        push    bc
-        push    af
-
         call    06006h  ; nemesis 3 song update function
 
-        pop     af
-        ld      (0ffffh), a
-
         ; set a flag which vkiller uses to know whether music is playing
-        ld      a,(020c0h)
+        ld      a,(0eec0h)
         ld      (0c0a7h), a
 
-        ; restore ROM
-        pop     bc
-        out     (c), b
 ram_not_initialised:
         ld      a, 14
         ld      (09000h), a

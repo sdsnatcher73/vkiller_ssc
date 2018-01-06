@@ -31,7 +31,17 @@ def patch_mapper(rom):
             rom[offset + 2] += 0x10
 
 PATCH_IGNORE_LIST = [0x20daa, 0x23340, 0x20beb]
-CHANNEL_OFFSET = -0xc0  # 0e00h -> 02000h
+#CHANNEL_OFFSET = -0xc000  # 0e00h -> 02000h
+CHANNEL_OFFSET = +0x0e00  # 0e00h -> 0ee00h
+
+
+def offset_address(rom, index, offset):
+    """Modify an address in the ROM by a certain amount"""
+    addr = rom[index] + rom[index + 1] * 256
+    addr += offset
+    rom[index] = addr & 255
+    rom[index + 1] = addr >> 8
+
 
 def patch_music_channel_locations(rom):
     """Patch scc player to move channel data locations"""
@@ -41,10 +51,10 @@ def patch_music_channel_locations(rom):
         if (rom[offset] == 0xdd and
             rom[offset + 1] == 0x21 and
             (rom[offset + 3] & 0xfc) == 0xe0):
-            rom[offset + 3] += CHANNEL_OFFSET
+            offset_address(rom, offset + 2, CHANNEL_OFFSET)
         if (rom[offset] in [0x01, 0x11, 0x21, 0x32, 0x3a, 0x22, 0x2a] and
             (rom[offset + 2] & 0xfc) == 0xe0):
-            rom[offset + 2] += CHANNEL_OFFSET
+            offset_address(rom, offset + 1, CHANNEL_OFFSET)
 
 
 def patch_bios_psg_calls(rom):
@@ -78,7 +88,38 @@ rom = rom + scc_rom[0x14000:0x1a000] + b' ' * 0x1a000
 # Nemesis 3 kick drum fix
 # See: https://www.msx.org/forum/msx-talk/general-discussion/nemesis-3-gofers-ambition-episode-ii-bass-drum-lost
 assert rom[0x21484] == 0x0a
-rom[0x21484] = 0xf0
+#rom[0x21484] = 0xf0  # make kick envelope longer
+# kick fix (maybe?)
+rom[0x21485] = 0x90
+rom[0x21486] = 0
+# snare fix (maybe?)
+rom[0x21487] = 0x90
+rom[0x21488] = 0
+
+# kick
+rom[0x213e0] = 0xc0
+rom[0x213e1] = 0
+
+# snare click
+rom[0x213ec] = 0xc0
+rom[0x213ed] = 0
+
+# snare2 click
+rom[0x21404] = 0xa0
+rom[0x21405] = 0
+
+# move the stack to 0xfaf0. this is a bit of memory
+# that is used by the MSX BASIC 'PAINT' command so it
+# is unused for our purposes. This then frees up the area
+# that Vampire Killer has reserved for the stack:
+# 0xee00 - 0xf100. We then use this area of memory
+# for the Nemesis 3 SCC player's state data
+rom[0x0078] = 0xfa
+rom[0x0077] = 0xf0
+
+# there are lots of these, and some of the drums
+# will iterate through a list of them over time
+
 
 # compile new music into ROM
 compile('mml/vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
