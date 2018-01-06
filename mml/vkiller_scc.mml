@@ -749,21 +749,21 @@ gameover_drums:
 
 
 gameover_scc1:
-    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
+    @cmd(fe01)i11@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
     o3r2b2r2b2r2o2d2f#4r2o3b2r2b2r2o2d2g4
     r2g2f#2f2f#2r2g2r2g2o3a#4r4b6
     @end()
 
 
 gameover_scc2:
-    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
+    @cmd(fe01)i11@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
     o3r2f#2r2f#2r2b2o2d4r2o3f#2r2f#2r2b2o2d4
     r2d2c#2c2c#2r2d2r2d2o3f#4r4f#6
     @end()
 
 
 gameover_scc3:
-    @cmd(fe01)i10@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
+    @cmd(fe01)i11@cmd(ea0a)@cmd(eb0953)@cmd(db02)t4
     o3r2d2r2d2r2f#2b4r2d2r2d2r2f#2b4
     r2b2a#2a#2a#2r2b2r2b2c#4r4d6
     @end()
@@ -776,7 +776,7 @@ gameover_scc4:
     @end()
 
 gameover_scc5:
-    @cmd(fe01)i10@cmd(ea04)@cmd(eb0953)@cmd(db01)t1r9t4
+    @cmd(fe01)i11@cmd(ea04)@cmd(eb0953)@cmd(db01)t1r9t4
     o3r2b2r2b2r2o2d2f#4r2o3b2r2b2r2o2d2g4
     r2g2f#2f2f#2r2g2r2g2o3a#4r6
     @end()

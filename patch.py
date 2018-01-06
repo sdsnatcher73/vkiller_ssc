@@ -78,7 +78,7 @@ rom = rom + scc_rom[0x14000:0x1a000] + b' ' * 0x1a000
 # Nemesis 3 kick drum fix
 # See: https://www.msx.org/forum/msx-talk/general-discussion/nemesis-3-gofers-ambition-episode-ii-bass-drum-lost
 assert rom[0x21484] == 0x0a
-#rom[0x21484] = 0xa0
+rom[0x21484] = 0xf0
 
 # compile new music into ROM
 compile('mml/vkiller_scc.mml', rom, nemesis3, 0x1a000, 0x7510, 0x8000)
