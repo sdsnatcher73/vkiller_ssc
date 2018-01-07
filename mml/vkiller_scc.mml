@@ -213,7 +213,7 @@ stalker_psg_drum_pattern:
     a1c1a1c1d#2c1c1c#1c1c1@rtn()
 
 stalker_psg_drums:
-    @cmd(fe04)t9
+    @cmd(fe04)t8
 stalker_psg_drums_0:
     a2c2c3c2c1c#3a1a1a1
     a2c2c3c2c1c#1d#1d#1d#1a1a1
@@ -240,7 +240,7 @@ stalker_psg_drums_4:
 
 
 stalker_psg1:
-    @cmd(fe01)@cmd(ea0a)@cmd(eb0340)@cmd(db09)t9
+    @cmd(fe01)@cmd(ea0a)@cmd(eb0340)@cmd(db09)t8
 stalker_psg1_0:
     r1o3d2a2o2d2o3a1o2c2o3g1b3o4a1o3c1d1
     o3d2a2o2d2o3a1o2c2o3g1b3o4a1o3c1
@@ -265,13 +265,13 @@ stalker_scc1_inst:
     @cmd(fe01)i1@cmd(ea0f)@cmd(eb0a70)@cmd(db05)@rtn()
 
 stalker_scc1:
-    @call(stalker_scc1_inst)t9
+    @call(stalker_scc1_inst)t8
 stalker_scc1_0:
     o3d2a2o2d2o3a1o2c2o3g1@cmd(eb4000)b3@cmd(eb0a70)o4a1o3c1d1
     o3d2a2o2d2o3a1o2c2o3g1@cmd(eb4000)b3@cmd(eb0a70)o4a1o3c1d1
 
 stalker_scc1_1:
-    @call(stalker_scc1_inst)t9
+    @call(stalker_scc1_inst)t8
     o5d2d2f1a1r4d2g1b3d2d2f1a1r6a1o4c3
     o5d2d2f1a1r4d2g1b3d2d2f1a1r6a1o4c3
 
@@ -287,20 +287,20 @@ stalker_scc1_1:
     @goto(stalker_scc1_1)
 
 stalker_scc2:
-    @cmd(fe01)i23@cmd(ea0c)@cmd(eb0a70)@cmd(db03)t9
+    @cmd(fe01)i23@cmd(ea0c)@cmd(eb0a70)@cmd(db03)t8
 stalker_scc2_0:
     o4d13c1c1c1
     o4d13c1c1c1
 
 stalker_scc2_3:
-    @cmd(fe01)i23@cmd(ea0c)@cmd(eb0a70)@cmd(db03)t9
+    @cmd(fe01)i23@cmd(ea0c)@cmd(eb0a70)@cmd(db03)t8
     o3d2d2f1a1r4d2g1b3d2d2f1a1r10
     o3d2d2f1a1r4d2g1b3d2d2f1a1r10
 
     i12@cmd(ea0c)@cmd(eb0470)@cmd(db00)
 stalker_scc2_1:
-    t9o1r4t2r5@cmd(ea04)d3f3a3@cmd(ea03)d3f3a3@cmd(ea02)d3f3a3@cmd(ea01)d3f1t9r4
-    t9o2r4t2r5@cmd(ea04)a#3o1d3f3@cmd(ea03)o2a#3o1d3f3o2@cmd(ea02)a#3o1d3f3@cmd(ea01)o2a#3o1d1t9r4
+    t8o1r4t1r10@cmd(ea04)d5f5a5@cmd(ea03)d5f5a5@cmd(ea02)d5f5a5@cmd(ea01)d5f1r4t8r4
+    t8o2r4t1r10@cmd(ea04)a#5o1d5f5@cmd(ea03)o2a#5o1d5f5o2@cmd(ea02)a#5o1d5f5@cmd(ea01)o2a#3o1d1r4t8r4
     @loop(2, stalker_scc2_1)
 
 stalker_scc2_2:
@@ -316,7 +316,7 @@ stalker_scc2_2:
 
 
 stalker_scc3:
-    @cmd(fe01)i10@cmd(eb0a70)t9
+    @cmd(fe01)i10@cmd(eb0a70)t8
 stalker_scc3_0:
     o2@cmd(ea01)@cmd(db01)d1@cmd(ea02)@cmd(db02)d1@cmd(ea03)@cmd(db03)d2@cmd(ea04)@cmd(db04)d7@cmd(ea03)@cmd(db03)d1@cmd(ea02)@cmd(db02)d1o4@cmd(ea0c)@cmd(db0c)@cmd(fe01)i23@cmd(ea0c)@cmd(eb0a70)@cmd(db03)a1o3c1d1
     i10@cmd(eb0a70)o1@cmd(ea01)@cmd(db01)d1@cmd(ea02)@cmd(db02)d1@cmd(ea03)@cmd(db03)d2@cmd(ea04)@cmd(db04)d7@cmd(ea03)@cmd(db03)d1@cmd(ea02)@cmd(db02)d1o4@cmd(ea0c)@cmd(db0c)@cmd(fe01)i23@cmd(ea0c)@cmd(eb0a70)@cmd(db03)a1o3c1d1
@@ -340,20 +340,20 @@ stalker_scc3_1:
 
 
 stalker_scc4:
-    @call(stalker_scc1_inst)t9
+    @call(stalker_scc1_inst)t8
 stalker_scc4_0:
     r4o3a2r1g2r1g3r7a2r1g2r1g3r3
 
 stalker_scc4_3:
-    @call(stalker_scc1_inst)t9
+    @call(stalker_scc1_inst)t8
     i32
     o4d2d2f1a1r4d2g1b3d2d2f1a1r10
     o4d2d2f1a1r4d2g1b3d2d2f1a1r6a1o3c3
 
     i12@cmd(ea0c)@cmd(eb0470)@cmd(db00)
 stalker_scc4_1:
-    t9o1r4t2@cmd(ea08)d3f3a3@cmd(ea04)d3f3a3@cmd(ea02)d3f3a3@cmd(ea01)d3f3a3t9r4
-    t9o2r4t2@cmd(ea08)a#3o1d3f3@cmd(ea04)o2a#3o1d3f3o2@cmd(ea02)a#3o1d3f3@cmd(ea01)o2a#3o1d3f3t9r4
+    t8o1r4t1@cmd(ea08)d5f5a5@cmd(ea04)d5f5a5@cmd(ea02)d5f5a5@cmd(ea01)d5f5a5r4t8r4
+    t8o2r4t1@cmd(ea08)a#5o1d5f5@cmd(ea04)o2a#5o1d5f5o2@cmd(ea02)a#5o1d5f5@cmd(ea01)o2a#5o1d5f5r4t8r4
     @loop(2, stalker_scc4_1)
 
     i1@cmd(ea03)@cmd(eb0af0)@cmd(db01)r1
@@ -368,7 +368,7 @@ stalker_scc4_2:
 
 
 stalker_scc5:
-    @cmd(fe01)i10@cmd(ea0c)@cmd(eb0a70)@cmd(db07)t9
+    @cmd(fe01)i10@cmd(ea0c)@cmd(eb0a70)@cmd(db07)t8
 stalker_scc5_0:
     o2@cmd(ea01)@cmd(db01)a1@cmd(ea02)@cmd(db02)a1@cmd(ea03)@cmd(db03)a2@cmd(ea04)@cmd(db04)a7@cmd(ea03)@cmd(db03)a1@cmd(ea02)@cmd(db02)a1o4@cmd(ea0c)@cmd(db0c)r3
     @loop(2, stalker_scc5_0)
