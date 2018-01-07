@@ -1572,8 +1572,9 @@ ending3:
 
 
 ending4:
-    @cmd(fe01)i11@cmd(ea05)@cmd(eb3821)@cmd(db01)t6r2
+    @cmd(fe01)i11t6r2
 ending4_0:
+    @cmd(ea05)@cmd(eb3821)@cmd(db01)
     o2c2r2o3a2r2o2c3d1r2d#2r2d#2d2r2c2r2o3a2r2o2d#1
     d1c2o3a4o2c3d1r2c2d#3d1c2e4r6a3
     e1d#2r2d2r2c3o3a1r2a2o2c2d2d#2d2r2c2
