@@ -695,28 +695,33 @@ intro_drums:
     @cmd(fe04)t6
     a2a2a2a2e2e2d#2d#1d#1
     a2c1c1d#2c1c1a2c1c1d#2c1c1
-    a2c1c1d#2c1c1a2c1c1d#2d#2e7e7
+    a2c1c1d#2c1c1a2c1c1d#2d#2e3d#1d#2e7
     @end()
 
 intro_psg1:
-    @cmd(fe01)i11@cmd(ea0c)@cmd(eb0953)@cmd(db03)t6o2
-    @call(intro_psg1_0)
+    @cmd(fe01)i11@cmd(ea0a)@cmd(eb0953)@cmd(db03)t6o2
+    d2d#2g2f#2g2f#2f2
+    @cmd(ea06)
+    t2g1g#1a1a#1b1o1c1t6
+    @cmd(ea0a)
     o1c#6o2a#6g8r6g2a#2o1c#2
-    @cmd(db0f)@cmd(ea06)@cmd(eb2f53)
-    @cmd(ea01)@cmd(db01)e1@cmd(ea02)@cmd(db02)e1@cmd(ea03)@cmd(db04)e1@cmd(ea04)@cmd(db04)e1@cmd(ea05)@cmd(db05)e1@cmd(ea06)@cmd(db06)e1
-    @cmd(ea01)@cmd(db01)d#1@cmd(ea02)@cmd(db02)d#1@cmd(ea03)@cmd(db04)d#1@cmd(ea04)@cmd(db04)d#1@cmd(ea05)@cmd(db05)d#1@cmd(ea06)@cmd(db06)d#1
-    @cmd(ea07)@cmd(db07)d#1@cmd(ea08)@cmd(db08)d#1@cmd(ea08)@cmd(db08)d#2
+
+    @cmd(ea08)@cmd(db03)@cmd(ebf000)e3@cmd(eb2f53)@cmd(ea02)@cmd(db02)e1@cmd(ea03)@cmd(db03)e1@cmd(ea04)@cmd(db04)e1
+    @cmd(ea08)@cmd(db03)@cmd(ebf000)d#3@cmd(eb2f53)@cmd(ea02)@cmd(db02)d#1@cmd(ea03)@cmd(db03)d#1@cmd(ea04)@cmd(db04)d#1@cmd(ea05)@cmd(db05)d#4
     @end()
 
 intro_psg2:
-    @cmd(fe01)i35@cmd(ea0c)@cmd(eb0953)@cmd(db03)t6
+    @cmd(fe01)i35@cmd(ea0a)@cmd(eb0953)@cmd(db03)t6
     @cmd(fe01)i11o3
     @call(intro_psg1_0)
-    o2g6g6c#8r6c#2g2g2@cmd(ebf000)g6g10
+    o2g6g6c#8r6c#2g2g2
+
+    @cmd(ea08)@cmd(db02)@cmd(ebf000)g3@cmd(eb2f53)@cmd(ea02)@cmd(db02)g1@cmd(ea03)@cmd(db03)g1@cmd(ea04)@cmd(db04)g1
+    @cmd(ea08)@cmd(db02)@cmd(ebf000)g3@cmd(eb2f53)@cmd(ea02)@cmd(db02)g1@cmd(ea03)@cmd(db03)g1@cmd(ea04)@cmd(db04)g1@cmd(ea05)@cmd(db05)g4
     @end()
 
 intro_psg3:
-    @cmd(fe01)i11@cmd(ea0c)@cmd(eb7080)@cmd(db03)t6
+    @cmd(fe01)i11@cmd(ea0a)@cmd(eb7080)@cmd(db03)t6
     o4d2d#2g2f#2g2f#2f2f#2
 intro_psg3_0:
     o4g2a#2o3c#2d2
@@ -733,7 +738,7 @@ intro_psg1_0:
     @rtn()
 
 intro_psg4:
-    @cmd(fe01)i23@cmd(ea0c)@cmd(eb7080)@cmd(db03)t6
+    @cmd(fe01)i23@cmd(ea0a)@cmd(eb7080)@cmd(db03)t6
     o5d2d#2g2f#2g2f#2f2f#2
 intro_psg4_0:
     o5g2a#2o4c#2d2
@@ -746,9 +751,12 @@ intro_psg4_0:
     @end()
 
 intro_psg5:
-    @cmd(fe01)i11@cmd(ea04)@cmd(eb0953)@cmd(db00)t1o2r10t6
+    @cmd(fe01)i11@cmd(ea04)@cmd(eb0953)@cmd(db01)t1o2r10t6
     @call(intro_psg1_0)
-    o1c#6o2a#6g8r6g2a#2o1c#1
+    o1c#6o2a#6g8r6g2a#2o1c#2
+
+    @cmd(ea04)@cmd(db01)@cmd(ebf000)e6
+    @cmd(ea04)@cmd(db01)@cmd(ebf000)d#10
     @end()
 
 
