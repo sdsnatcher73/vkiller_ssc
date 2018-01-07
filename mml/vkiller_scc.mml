@@ -6,15 +6,15 @@
 @song(3, out_of_time_drums, 0, 0, out_of_time_bass, out_of_time_bg, out_of_time_bg2, out_of_time_lead, out_of_time_lead2)
 @song(4, heart_of_fire_drums, 0, 0, heart_of_fire_bass, heart_of_fire_lead1, heart_of_fire_lead4, heart_of_fire_lead2, heart_of_fire_lead3)
 @song(5, edge_psg, edge_drums, 0, edge_bass, edge_bass2, edge_lead2, edge_lead, edge_lead_echo)
-@song(6, finalboss_psg, dummy, 0, finalboss_1, finalboss_2, finalboss_3, finalboss_4, 0)
+@song(6, finalboss_psg, dummy, 0, finalboss_1, finalboss_2, finalboss_3, finalboss_4, dummy)
 @song(7, boss_psg0, boss_psg1, 0, boss_scc1, boss_scc1d, boss_scc2, boss_scc2d, boss_scc3)
-@song(8, dummy, dummy, 0, nothing_to_lose1, nothing_to_lose2, nothing_to_lose3, nothing_to_lose4, 0)
+@song(8, dummy, dummy, 0, nothing_to_lose1, nothing_to_lose2, nothing_to_lose3, nothing_to_lose4, dummy)
 @song(9, death_drums, 0, 0, death_4, death_2, death_3, death_1, death_5)
 @song(10, intro_psg1, 0, 0, intro_psg1, intro_psg2, intro_psg3, intro_psg4, intro_psg5)
 @song(11, gameover_drums, 0, 0, gameover_scc5, gameover_scc4, gameover_scc3, gameover_scc2, gameover_scc1)
 @song(12, clear_psg1, clear_psg2, 0, clear_scc1, clear_scc2, clear_scc3, clear_scc1d, clear_scc2d)
 @song(13, dummy, dummy, 0, all_clear1, all_clear2, all_clear3, all_clear4, all_clear1d)
-@song(14, ending_drums, dummy, 0, ending1, ending2, ending3, ending4, 0)
+@song(14, ending_drums, dummy, 0, ending1, ending2, ending3, ending4, dummy)
 
 
 ; song 0 = Vampire Killer (stage 1)
@@ -1272,15 +1272,15 @@ out_of_time_bass:
 
 
 out_of_time_lead:
-    @cmd(fe01)i10@cmd(ea0d)@cmd(eb0801)@cmd(db03)t6
+    @cmd(fe01)i10@cmd(ea0c)@cmd(eb0801)@cmd(db03)t6
 
     o2d2d2g2d2g2d2f1g3d2d2g2d2g2d2f1g3
     d2d2g2d2g2d2f1g3d2d2g2d2g2d2f1g3
 
 out_of_time_lead_0:
-    @cmd(eb1207)@cmd(ea0c)@cmd(db03)
-    i10o3g6a#8a1a#1o2c6o3a#6a4
-    a#6g10 @cmd(ea0a)@cmd(db01)i9o2d3a3o1d10
+    @cmd(eb1207)@cmd(ea09)@cmd(db03)
+    i11o3g6a#8a1a#1o2c6o3a#6a4
+    a#6g10 @cmd(ea0a)@cmd(db01)i7o2d3a3o1d10
     @loop(2, out_of_time_lead_0)
 
     i10@cmd(eb0801)
@@ -1288,7 +1288,7 @@ out_of_time_lead_1:
     o1@cmd(ea08)@cmd(db03)g3d3@cmd(ea04)@cmd(db02)g3d3@cmd(ea07)@cmd(db03)g2d2
     @loop(4, out_of_time_lead_1)
 
-    i10@cmd(ea0d)@cmd(eb0801)@cmd(db03)
+    i11@cmd(ea09)@cmd(eb0801)@cmd(db03)
     o3g3a3a#2a3a#3o2c2o3a#3o2c3d2c3d3d#2
     d16r2d2c#2c2o3b2a#2a2g#2
 
@@ -1296,14 +1296,14 @@ out_of_time_lead_1:
 
 
 out_of_time_lead2:
-    @cmd(fe01)i10@cmd(ea05)@cmd(eb0801)@cmd(db02)t6
+    @cmd(fe01)i10@cmd(ea06)@cmd(eb0801)@cmd(db03)t6
     r3o2d2d2g2d2g2d2d2g2d2d2g2d2g2d2d2g2
     d2d2g2d2g2d2d2g2d2d2g2d2g2d2f1
 
 out_of_time_lead2_0:
-    @cmd(ea0c)@cmd(eb1205)@cmd(db03)
-    i10o3d6g6r2f1g1a4r2g4r4f1e1
-    d#4r2d4r2c#2r3i9@cmd(ea07)@cmd(db00)d3a3o2d5r4
+    @cmd(ea09)@cmd(eb1205)@cmd(db03)
+    i11o3d6g6r2f1g1a4r2g4r4f1e1
+    d#4r2d4r2c#2r3i7@cmd(ea07)@cmd(db00)d3a3o2d5r4
     @loop(2, out_of_time_lead2_0)
 
     i10@cmd(eb0801)
@@ -1313,9 +1313,9 @@ out_of_time_lead2_1:
     @loop(3, out_of_time_lead2_1)
     o1@cmd(ea04)@cmd(db01)g3d3@cmd(ea02)@cmd(db00)g3d3@cmd(ea04)@cmd(db01)g2
 
-    i10@cmd(ea09)@cmd(eb0801)@cmd(db02)
+    i11@cmd(ea09)@cmd(eb0801)@cmd(db02)
     o3d#3f3g2f3g3a2g3a3a#2a3a#3o2c2
-    o3a16r2o2d2c#2c2o3b2a#2a2g#2
+    o3a16r16 ;r2o2d2c#2c2o3b2a#2a2g#2
 
     @goto(out_of_time_lead2)
 
@@ -1333,11 +1333,11 @@ out_of_time_bg_1:
     a#2a#1a#3r9a1a2a1a3r9
     @loop(2, out_of_time_bg_1)
 
-    o3i10@cmd(ea09)@cmd(eb0801)@cmd(db03)
+    o3i10@cmd(ea09)@cmd(eb0801)@cmd(db02)
     a#8a8g8g8
     a#8a8g8g4g2g2o4a#3
     o3c3d#2c3d#3f2d#3f3g2f3g3a#2
-    f16r2o2d2c#2c2o3b2a#2a2g#2
+    f16r16;r2o2d2c#2c2o3b2a#2a2g#2
 
     @goto(out_of_time_bg)
 
@@ -1355,7 +1355,7 @@ out_of_time_bg_2:
     g1g2g1g3r9f#1f#2f#1f#3r9
     @loop(2, out_of_time_bg_2)
 
-    o3i10@cmd(ea09)@cmd(eb0801)@cmd(db03)
+    o2i10@cmd(ea09)@cmd(eb0801)@cmd(db02)
     g8f8e8d#8
     g8f8e8d#4d#2d#2
     r16r16r16r2
