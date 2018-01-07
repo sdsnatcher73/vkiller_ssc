@@ -788,19 +788,19 @@ gameover_scc5:
 
 
 clear_scc1:
-    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
+    @cmd(fe01)i88@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
 clear_scc1_0:
-    o2d#4r2d#2r2f2r2d#2d2d2r2d2r2d#2r2d2c2d2d#2d2d#2f2g15
+    o1d#4r2d#2r2f2r2d#2d2d2r2d2r2d#2r2d2c2d2d#2d2d#2f2g15
     @end()
 
 clear_scc2:
-    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
+    @cmd(fe01)i88@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
 clear_scc2_0:
-    o2c4r2c2r2d2r2c2o3a#2a#2r2a#2r2o2c2r2o3a#2g2a#2o2c2o3a#2o2c2d2d#15
+    o1c4r2c2r2d2r2c2o3a#2a#2r2a#2r2o2c2r2o3a#2g2a#2o2c2o3a#2o2c2d2d#15
     @end()
 
 clear_scc3:
-    @cmd(fe01)i29@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
+    @cmd(fe01)i88@cmd(ea0c)@cmd(eb0953)@cmd(db03)t4
 clear_scc3_0:
     o2g4r2g2r2g2r2g2f2f2r2f2r2f2r2f2d#2f2g2f2g2a#2o1c15
     @end()
@@ -818,15 +818,15 @@ clear_psg2:
 ; @cmd(f220)@cmd(f141) tremolo
 
 clear_scc1d:
-    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
+    @cmd(fe01)i88@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
     @goto(clear_scc1_0)
 
 clear_scc2d:
-    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
+    @cmd(fe01)i88@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
     @goto(clear_scc2_0)
 
 clear_scc3d:
-    @cmd(fe01)i29@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
+    @cmd(fe01)i88@cmd(ea06)@cmd(eb287f)@cmd(db02)t4r2@cmd(f220)@cmd(f141)
     @goto(clear_scc3_0)
 
 

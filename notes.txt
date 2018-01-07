@@ -1,10 +1,6 @@
 TODO:
 - Re-work all music with proper speakers
     - heart of fire - lead instrument should be louder
-    - stage clear theme - not bright enough
-      needs to be higher octave
-    - out of time need brighter lead
-      (one at the start is ok)
     - ending music needs brighter instruments
 
 
