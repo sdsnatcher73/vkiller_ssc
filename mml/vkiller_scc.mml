@@ -8,9 +8,9 @@
 @song(5, edge_psg, edge_drums, 0, edge_bass, edge_bass2, edge_lead2, edge_lead, edge_lead_echo)
 @song(6, finalboss_psg, dummy, 0, finalboss_1, finalboss_2, finalboss_3, finalboss_4, dummy)
 @song(7, boss_psg0, boss_psg1, 0, boss_scc1, boss_scc1d, boss_scc2, boss_scc2d, boss_scc3)
-@song(8, dummy, dummy, 0, nothing_to_lose1, nothing_to_lose2, nothing_to_lose3, nothing_to_lose4, dummy)
+@song(8, dummy, dummy, 0, nothing_to_lose1, nothing_to_lose4, nothing_to_lose5, nothing_to_lose2, nothing_to_lose3)
 @song(9, death_drums, 0, 0, death_4, death_2, death_3, death_1, death_5)
-@song(10, intro_psg1, 0, 0, intro_psg1, intro_psg2, intro_psg3, intro_psg4, intro_psg5)
+@song(10, intro_psg1, intro_drums, 0, intro_psg1, intro_psg2, intro_psg3, intro_psg4, intro_psg5)
 @song(11, gameover_drums, 0, 0, gameover_scc5, gameover_scc4, gameover_scc3, gameover_scc2, gameover_scc1)
 @song(12, clear_psg1, clear_psg2, 0, clear_scc1, clear_scc2, clear_scc3, clear_scc1d, clear_scc2d)
 @song(13, dummy, dummy, 0, all_clear1, all_clear2, all_clear3, all_clear4, all_clear1d)
@@ -690,6 +690,13 @@ death_5:
     r2t11r1o2e1d#1o3b1o2d1c#1o3a1o2c1o3b5
     @end()
 
+
+intro_drums:
+    @cmd(fe04)t6
+    a2a2a2a2e2e2d#2d#1d#1
+    a2c1c1d#2c1c1a2c1c1d#2c1c1
+    a2c1c1d#2c1c1a2c1c1d#2d#2e7e7
+    @end()
 
 intro_psg1:
     @cmd(fe01)i11@cmd(ea0c)@cmd(eb0953)@cmd(db03)t6o2
@@ -1441,9 +1448,9 @@ finalboss_psg:
 
 
 nothing_to_lose1:
-    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t5
 
-    o4f2f2f2f#2f#2f#2g2g2g2g#2g#2g#2
+    o4f2f2f2f#2f#2f#2g2g2g2g#2g#2g#2t7
 nothing_to_lose1_0:
     o3g1a#1g1a#1g1a#1g1a#1
     g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1g1a#1a1o2c1o3a1o2c1o3a1o2c1o3a1o2c1
@@ -1456,9 +1463,9 @@ nothing_to_lose1_0:
 
 
 nothing_to_lose2:
-    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t5
 
-    o4d2d2d2d2d2d2d2d2d2d2d2d2
+    o4d2d2d2d2d2d2d2d2d2d2d2d2t7
 nothing_to_lose2_0:
     o5g4a2a#4
     o4c2o5a#2a2g4a2a#4o4d2c2o5a#2a4a#2o4c4
@@ -1471,10 +1478,10 @@ nothing_to_lose2_0:
 
 
 nothing_to_lose3:
-    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i29@cmd(ea0a)@cmd(eb3821)@cmd(db03)t5
 
 nothing_to_lose3_s:
-    o5g2g2g2g2g2g2g2g2g2g2g2g2
+    o5g2g2g2g2g2g2g2g2g2g2g2g2t7
 nothing_to_lose3_0:
     o4g4a2a#4
     o3c2o4a#2a2g4a2a#4o3d2c2o4a#2a4a#2o3c4
@@ -1487,9 +1494,13 @@ nothing_to_lose3_0:
 
 
 nothing_to_lose4:
-    @cmd(fe01)i23@cmd(ea0a)@cmd(eb3821)@cmd(db03)t7
+    @cmd(fe01)i23@cmd(ea0a)@cmd(eb3821)@cmd(db03)t5
     @goto(nothing_to_lose3_s)
 
+
+nothing_to_lose5:
+    @cmd(fe01)t10@cmd(f141)@inst(8002)@cmd(ea07)@cmd(eb0220)o5g12
+    @end()
 
 
 all_clear1:
