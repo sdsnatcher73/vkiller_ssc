@@ -1522,7 +1522,7 @@ all_clear1d:
     @goto(all_clear1_0)
 
 ending1:
-    @cmd(fe01)i19@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
+    @cmd(fe01)i11@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
     o2c2r2o3a2r2o2c3d1r2d#2r2d#2d2r2c2r2o3a2r2o2d#1
     d1c2o3a4o2c3d1r2c2d#3d1c2e4r6a3
     e1d#2r2d2r2c3o3a1r2a2o2c2d2d#2d2r2c2
@@ -1534,7 +1534,7 @@ ending1:
 
 
 ending2:
-    @cmd(fe01)i19@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
+    @cmd(fe01)i11@cmd(ea0a)@cmd(eb3821)@cmd(db03)t6
     o3a2r2e2r2a3b1r2o2c2r2c2o3b2r2a2r2e2r2o2c1
     o3b1a2e4a3b1r2a2o2c3o3b1a2b4o4e2f#2g#2
     o2e3r1c2r2o3b2r2a3e1r2e2a2b2o2c2o3b2r2a2o3
@@ -1553,7 +1553,7 @@ ending3:
 
 
 ending4:
-    @cmd(fe01)i19@cmd(ea05)@cmd(eb3821)@cmd(db01)t6r2
+    @cmd(fe01)i11@cmd(ea05)@cmd(eb3821)@cmd(db01)t6r2
 ending4_0:
     o2c2r2o3a2r2o2c3d1r2d#2r2d#2d2r2c2r2o3a2r2o2d#1
     d1c2o3a4o2c3d1r2c2d#3d1c2e4r6a3

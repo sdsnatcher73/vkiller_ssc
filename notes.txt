@@ -1,7 +1,6 @@
 TODO:
 - Re-work all music with proper speakers
     - heart of fire - lead instrument should be louder
-    - ending music needs brighter instruments
 
 
 turbofix patch (19 dec 2017)
