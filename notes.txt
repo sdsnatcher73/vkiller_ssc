@@ -1,8 +1,6 @@
 TODO:
-- Re-work all music with proper speakers
-  - Add drums for 'stage clear'
-- Use filter effect at start of first boss tune 'nothing to lose'
-- Maybe use filter effect in intro music?
+- Implement sound change to "out of time" as suggested by Jelle
+- Do a final play
 
 
 turbofix patch (19 dec 2017)
