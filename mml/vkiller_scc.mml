@@ -1330,7 +1330,7 @@ out_of_time_lead2_1:
 
     i11@cmd(ea09)@cmd(eb0801)@cmd(db02)
     o3d#3f3g2f3g3a2g3a3a#2a3a#3o2c2
-    o3a16r16 ;r2o2d2c#2c2o3b2a#2a2g#2
+    o3a16r16
 
     @goto(out_of_time_lead2)
 
@@ -1352,7 +1352,7 @@ out_of_time_bg_1:
     a#8a8g8g8
     a#8a8g8g4g2g2o4a#3
     o3c3d#2c3d#3f2d#3f3g2f3g3a#2
-    f16r16;r2o2d2c#2c2o3b2a#2a2g#2
+    f16r16
 
     @goto(out_of_time_bg)
 
