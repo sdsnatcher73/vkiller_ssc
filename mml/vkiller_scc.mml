@@ -14,7 +14,7 @@
 @song(11, gameover_drums, 0, 0, gameover_scc5, gameover_scc4, gameover_scc3, gameover_scc2, gameover_scc1)
 @song(12, clear_psg1, clear_psg2, 0, clear_scc1, clear_scc2, clear_scc3, clear_scc1d, clear_scc2d)
 @song(13, dummy, dummy, 0, all_clear1, all_clear2, all_clear3, all_clear4, all_clear1d)
-@song(14, ending_drums, dummy, 0, ending1, ending2, ending3, ending4, dummy)
+@song(14, ending_drums, dummy, 0, ending1, ending5, ending3, ending4, ending2)
 
 
 ; song 0 = Vampire Killer (stage 1)
@@ -1350,7 +1350,8 @@ out_of_time_bg_1:
 
     o3i10@cmd(ea09)@cmd(eb0801)@cmd(db02)
     a#8a8g8g8
-    a#8a8g8g4g2g2o4a#3
+    a#8a8g8g4g2g2
+    o4a#3
     o3c3d#2c3d#3f2d#3f3g2f3g3a#2
     f16r16
 
@@ -1370,10 +1371,11 @@ out_of_time_bg_2:
     g1g2g1g3r9f#1f#2f#1f#3r9
     @loop(2, out_of_time_bg_2)
 
-    o2i10@cmd(ea09)@cmd(eb0801)@cmd(db02)
+    o3i10@cmd(ea09)@cmd(eb0801)@cmd(db02)
     g8f8e8d#8
     g8f8e8d#4d#2d#2
-    r16r16r16r16
+    o4a#3a#3a#2a#3a#3a#2a#3a#3a#2a#3a#3a#2a16
+    r16
 
     @goto(out_of_time_bg2)
 
@@ -1588,3 +1590,16 @@ ending_drums:
     @cmd(fe04)t6
     a2c1c1d#2c1c1a2c1a1d#2a2c2a2d#2c2a2c2d#2c1d#1
     @goto(ending_drums)
+
+
+ending5:
+    @cmd(fe01)i1@cmd(ea09)@cmd(eb3821)@cmd(db01)t6
+    r16r16r16r16r16r16r16r16
+    o1c2r2o2a2r2o1c3d1r2d#2r2d#2d2r2c2r2o2a2r2o1d#1
+    d1c2o2a4o1c3d1r2c2d#3d1c2e4r6a3
+    e1d#2r2d2r2c3o2a1r2a2o1c2d2d#2d2r2c2
+    o1d1c1o2a4r2
+    @cmd(ea07)@cmd(db02)o1d1c1o2a4r2
+    @cmd(ea04)@cmd(db01)o1d1c1o2a4r2
+    @cmd(ea02)@cmd(db00)o1d1c1o2a4r2
+    @goto(ending5)
